@@ -12,7 +12,7 @@ import { RadiobuttonComponent } from './components/radiobutton/radiobutton.compo
 import { CheckboxComponent } from './components/checkbox/checkbox.component';
 import { DynamicFieldDirective } from './components/dynamic-field/dynamic-field.directive';
 import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { FuseSharedModule } from '@fuse/shared.module';
 // import { SmartComponent } from '../smart/smart.component';
 import { LabelComponent } from './components/textlabel/textlabel.component';
@@ -23,13 +23,18 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { FileUploaderComponent } from './components/file-uploader/file-uploader.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { ImageUploadModule } from 'ng2-imageupload';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SampleComponent } from '../sample/sample.component';
+import { NameRulesComponent } from '../name-rules/name-rules.component';
 const routes: Routes = [
   {
-    path     : 'sample',
+    path: 'sample',
     component: SampleComponent
-}
+  },
+  {
+    path: 'names',
+    component: NameRulesComponent
+  }
 ];
 @NgModule({
   imports: [
@@ -42,9 +47,10 @@ const routes: Routes = [
     PdfViewerModule,
     ImageUploadModule,
     MatFormFieldModule,
-    MatTooltipModule
+    MatTooltipModule,
+    BrowserAnimationsModule
   ],
-  declarations:   [
+  declarations: [
     // ProfileComponent,
     AutocompleteComponent,
     // SmartComponent,
@@ -60,9 +66,10 @@ const routes: Routes = [
     DynamicFieldDirective,
     DynamicFormComponent,
     FileUploaderComponent,
-    SampleComponent
+    SampleComponent,
+    NameRulesComponent
   ],
-   entryComponents: [
+  entryComponents: [
     AutocompleteComponent,
     InputComponent,
     ButtonComponent,
@@ -72,6 +79,6 @@ const routes: Routes = [
     CheckboxComponent,
     LabelComponent,
     FileUploaderComponent
-]
+  ]
 })
 export class DynamicProfileModule { }

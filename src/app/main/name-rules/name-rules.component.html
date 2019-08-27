@@ -1,0 +1,17 @@
+<div id="service" fxLayout="column">
+
+    <div id="service-form-wrapper" fxLayout="column" fxLayoutAlign="center center">
+
+        <div id="service-form" [@animate]="{value:'*',params:{duration:'300ms',y:'100px'}}">
+
+            <div class="logo">
+                <img src="assets/images/logos/fuse.svg">
+            </div>
+
+            <dynamic-profile [fieldData]="fieldOBJ">
+            </dynamic-profile>
+        </div>
+
+    </div>
+
+</div>

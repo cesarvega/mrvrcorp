@@ -18,25 +18,28 @@ import { fuseConfig } from 'app/fuse-config';
 import { AppComponent } from 'app/app.component';
 import { LayoutModule } from 'app/layout/layout.module';
 import { DynamicProfileModule } from './main/dynamic-profile/dynamic-profile.module';
-import { SampleModule } from './main/sample/sample.module';
+import { ToastrModule } from 'ngx-toastr';
+// import { SampleModule } from './main/sample/sample.module';
+// import { NameRulesComponent } from './main/name-rules/name-rules.component';
 
 const appRoutes: Routes = [
     {
         path      : '**',
-        redirectTo: 'sample'
+        redirectTo: 'names'
     }
 ];
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        // NameRulesComponent
     ],
     imports     : [
         BrowserModule,
         BrowserAnimationsModule,
         HttpClientModule,
         RouterModule.forRoot(appRoutes),
-
+        ToastrModule.forRoot(),
         TranslateModule.forRoot(),
 
         // Material moment date module
@@ -56,7 +59,7 @@ const appRoutes: Routes = [
 
         // App modules
         LayoutModule,
-        SampleModule
+        // SampleModule
     ],
     bootstrap   : [
         AppComponent

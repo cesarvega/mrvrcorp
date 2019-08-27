@@ -67,7 +67,7 @@ export class FileUploadService {
     return this.httpClient.post(url, data);
   }
 
-  deleteDocument(docId: any):  Observable<any> {
+  deleteDocument(docId: any): Observable<any> {
     const url = `${this.API_URL}/delete_image`;
     const userName  =  localStorage.getItem('userName');
     const bodyString = { username: userName, docId: docId};
