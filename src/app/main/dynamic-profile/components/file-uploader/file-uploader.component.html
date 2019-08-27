@@ -4,8 +4,8 @@
     <mat-label>{{field.label}}</mat-label>
   </div>
   <div class="form-group" fxLayout="row">
-    <input hidden #selectFile type="file" imageUpload multiple accept=".jpg, jpeg, png, .pdf" (imageSelected)="selected($event)"
-      >
+    <input hidden #selectFile type="file" imageUpload multiple accept=".xlsx" (change)="incomingfile($event)">
+    <!-- <input hidden #selectFile type="file" imageUpload multiple accept=".jpg, jpeg, png, .pdf, .xlsx" (imageSelected)="selected($event)"> -->
     <button (click)="selectFile.click()" mat-button color="accent">Upload Files
       <mat-icon >arrow_upward</mat-icon>
     </button>  
