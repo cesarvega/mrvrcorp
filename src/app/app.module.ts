@@ -17,7 +17,8 @@ import { fuseConfig } from 'app/fuse-config';
 
 import { AppComponent } from 'app/app.component';
 import { LayoutModule } from 'app/layout/layout.module';
-import { SampleModule } from 'app/main/sample/sample.module';
+import { DynamicProfileModule } from './main/dynamic-profile/dynamic-profile.module';
+import { SampleModule } from './main/sample/sample.module';
 
 const appRoutes: Routes = [
     {
@@ -51,6 +52,7 @@ const appRoutes: Routes = [
         FuseSharedModule,
         FuseSidebarModule,
         FuseThemeOptionsModule,
+        DynamicProfileModule,
 
         // App modules
         LayoutModule,

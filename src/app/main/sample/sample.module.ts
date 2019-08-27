@@ -5,27 +5,29 @@ import { TranslateModule } from '@ngx-translate/core';
 import { FuseSharedModule } from '@fuse/shared.module';
 
 import { SampleComponent } from './sample.component';
+import { DynamicProfileModule } from '../dynamic-profile/dynamic-profile.module';
 
-const routes = [
-    {
-        path     : 'sample',
-        component: SampleComponent
-    }
-];
+// const routes = [
+//     {
+//         path     : 'sample',
+//         component: SampleComponent
+//     }
+// ];
 
 @NgModule({
     declarations: [
-        SampleComponent
+        // SampleComponent
     ],
     imports     : [
-        RouterModule.forChild(routes),
+        // RouterModule.forChild(routes),
 
         TranslateModule,
 
-        FuseSharedModule
+        FuseSharedModule,
+        DynamicProfileModule
     ],
     exports     : [
-        SampleComponent
+        // SampleComponent
     ]
 })
 

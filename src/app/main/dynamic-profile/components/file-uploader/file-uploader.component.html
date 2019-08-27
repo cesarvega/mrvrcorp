@@ -1,0 +1,28 @@
+<div class="fuse-card" fxFlex="100" fxLayout="column" fxLayoutAlign="start space" style="min-height: 300px"
+  fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="start start">
+  <div class="p-8 pt-0" fxLayout="row" fxLayoutAlign="start center">
+    <mat-label>{{field.label}}</mat-label>
+  </div>
+  <div class="form-group" fxLayout="row">
+    <input hidden #selectFile type="file" imageUpload multiple accept=".jpg, jpeg, png, .pdf" (imageSelected)="selected($event)"
+      >
+    <button (click)="selectFile.click()" mat-button color="accent">Upload Files
+      <mat-icon >arrow_upward</mat-icon>
+    </button>  
+  </div>
+  <div class="fuse-card" *ngFor="let src of pictures; let i = index" [id]="src.docId">
+    <img [src]="src.data" alt="Red dot" *ngIf="src.format === 'image/jpeg'" style="height: 200px; padding: 10px" />
+    <div class="pdf-container">
+      <pdf-viewer [src]="src.data" [render-text]="true" [zoom]="0.3" [show-all]="false" *ngIf="src.format !== 'image/jpeg'"></pdf-viewer>
+    </div>
+    <div class="p-16">
+      <div class="h1">{{src.name}}</div>
+      <div class="h4 secondary-text">{{src.format}}</div>
+    </div>
+    <div class="p-8 pt-0" fxLayout="row" fxLayoutAlign="start center">
+      <button mat-button color="accent" (click)="deleteDocument(i , src.docId)">Delete
+        <mat-icon >delete</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>
