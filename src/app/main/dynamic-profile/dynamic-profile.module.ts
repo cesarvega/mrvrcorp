@@ -32,7 +32,7 @@ const routes: Routes = [
     component: SampleComponent
   },
   {
-    path: 'names',
+    path: 'names/:projectid',
     component: NameRulesComponent
   }
 ];
