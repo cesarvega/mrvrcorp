@@ -26,6 +26,7 @@ import { ImageUploadModule } from 'ng2-imageupload';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SampleComponent } from '../sample/sample.component';
 import { NameRulesComponent } from '../name-rules/name-rules.component';
+import { MatTable, MatTableModule, MatSliderModule, MatGridList, MatGridListModule } from '@angular/material';
 const routes: Routes = [
   {
     path: 'sample',
@@ -48,7 +49,10 @@ const routes: Routes = [
     ImageUploadModule,
     MatFormFieldModule,
     MatTooltipModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatTableModule,
+    MatSliderModule,
+    MatGridListModule
   ],
   declarations: [
     // ProfileComponent,

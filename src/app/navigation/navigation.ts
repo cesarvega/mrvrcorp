@@ -9,7 +9,7 @@ export const navigation: FuseNavigation[] = [
         children : [
             {
                 id       : 'sample',
-                title    : 'Sample',
+                title    : 'BNRS',
                 translate: 'NAV.SAMPLE.TITLE',
                 type     : 'item',
                 icon     : 'email',

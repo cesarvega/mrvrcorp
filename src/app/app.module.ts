@@ -19,6 +19,7 @@ import { AppComponent } from 'app/app.component';
 import { LayoutModule } from 'app/layout/layout.module';
 import { DynamicProfileModule } from './main/dynamic-profile/dynamic-profile.module';
 import { ToastrModule } from 'ngx-toastr';
+import { APP_BASE_HREF } from '@angular/common';
 // import { SampleModule } from './main/sample/sample.module';
 // import { NameRulesComponent } from './main/name-rules/name-rules.component';
 
@@ -63,6 +64,9 @@ const appRoutes: Routes = [
     ],
     bootstrap   : [
         AppComponent
+    ],
+    providers: [
+        { provide: APP_BASE_HREF, useValue: '/BNRSRules/' },
     ]
 })
 export class AppModule

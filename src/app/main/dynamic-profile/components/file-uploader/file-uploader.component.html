@@ -1,16 +1,262 @@
-<div class="fuse-card" fxFlex="100" fxLayout="column" fxLayoutAlign="start space" style="min-height: 300px"
-  fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="start start">
-  <div class="p-8 pt-0" fxLayout="row" fxLayoutAlign="start center">
-    <mat-label>{{field.label}}</mat-label>
-  </div>
-  <div class="form-group" fxLayout="row">
-    <input hidden #selectFile type="file" imageUpload multiple accept=".xlsx" (change)="incomingfile($event)">
-    <!-- <input hidden #selectFile type="file" imageUpload multiple accept=".jpg, jpeg, png, .pdf, .xlsx" (imageSelected)="selected($event)"> -->
-    <button (click)="selectFile.click()" mat-button color="accent">Upload Files
-      <mat-icon >arrow_upward</mat-icon>
-    </button>  
-  </div>
-  <div class="fuse-card" *ngFor="let src of pictures; let i = index" [id]="src.docId">
+<mat-tab-group>
+  <mat-tab style="color:red" label="Rationales & Recraft">
+    <div class="fuse-card" fxFlex="100" fxLayout="column" fxLayoutAlign="start space-around">
+      <div class="p-8 pt-0" fxLayout="column" fxLayoutAlign="start space-around">
+        <h3>{{field.label}}</h3>
+        <div>
+          <h3 style="color:cornflowerblue">Regulatory Databases</h3>
+        </div>
+        <div>
+          <div fxLayout="row" fxLayoutGap="20px">
+            <div>
+              <mat-checkbox [checked]="(regulatoryDatabases[0].FDA === 'True')?true:false" ariaLabel="FDA" (change)="updateDatabaseOptions($event, 'FDA')">
+                FDA
+              </mat-checkbox>
+            </div>
+            <div>
+              <mat-checkbox [checked]="(regulatoryDatabases[0].HC === 'True')?true:false" ariaLabel="HC" (change)="updateDatabaseOptions($event, 'HC')">
+                HC
+              </mat-checkbox>
+            </div>
+            <div>
+              <mat-checkbox [checked]="(regulatoryDatabases[0].EMA === 'True')?true:false" ariaLabel="EMA" (change)="updateDatabaseOptions($event, 'EMA')">
+                EMA
+              </mat-checkbox>
+            </div>
+            <div>
+              <mat-checkbox [checked]="(regulatoryDatabases[0].ANVISA === 'True')?true:false" ariaLabel="ANVISA" (change)="updateDatabaseOptions($event, 'ANVISA')">
+                ANVISA
+              </mat-checkbox> 
+            </div>
+            <div fxLayout="row">
+              <div style="margin-top: -9px;">
+                <label>Min: {{min}}</label>
+                <mat-slider thumbLabel [displayWith]="formatLabel" (change)="setMinMax()" [(ngModel)]="min" step="1"
+                  min="3" max="6">
+                </mat-slider>
+              </div>
+              <div style="margin-top: -9px;">
+                <label>Max: {{max}}</label>
+                <mat-slider thumbLabel [displayWith]="formatLabel" (change)="setMinMax()" [(ngModel)]="max" step="1"
+                  min="7" max="12"></mat-slider>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <hr>
+        <div class="form-group" fxLayout="row" fxLayoutGap="10px">
+          <input hidden #selectFile type="file" imageUpload multiple accept=".xlsx" (change)="incomingfile($event)">
+          <!-- <input hidden #selectFile type="file" imageUpload multiple accept=".jpg, jpeg, png, .pdf, .xlsx" (imageSelected)="selected($event)"> -->
+          <button (click)="selectFile.click()" mat-raised-button color="accent">Upload excel
+            <mat-icon>arrow_upward</mat-icon>
+          </button>
+          <a style="color:red" href="http://tools.brandinstitute.com/nw3/assets/wordParts.xlsx">Download excel sample
+            <mat-icon>arrow_downward</mat-icon>
+          </a>
+        </div>
+      </div>
+      <hr>
+      <div fxFlex="100" fxLayout="column" fxLayoutAlign="start space-around" style="overflow-y: scroll">
+        <div fxLayout="row" fxLayoutGap="30px" fxLayoutAlign="start space-around">
+          <div fxFlex="40" class="pl-16">
+            <mat-form-field appearance="outline">
+              <mat-label style="color:red">Rationales</mat-label>
+              <input style="color:cornflowerblue" matInput placeholder="input rationales " [(ngModel)]="value1">
+            </mat-form-field>
+          </div>
+          <div fxFlex="50">
+            <mat-form-field appearance="outline">
+              <mat-label style="color:red">Word-Parts</mat-label>
+              <input style="color:coral" matInput placeholder="input word parts" [(ngModel)]="value2">
+            </mat-form-field>
+          </div>
+          <div fxFlex="10">
+            <button color="accent" style="margin: 10px;"
+              (click)="addRationalesAndWordParts(value1,value2); value2=''; value1=''" mat-mini-fab>Add +</button>
+          </div>
+        </div>
+        <hr>
+        <div fxLayout="row" fxLayoutGap="30px" fxLayoutAlign="start space-around">
+          <div fxFlex="90" class="pl-16">
+            <mat-form-field appearance="outline">
+              <mat-label style="color:red">Search Rationales</mat-label>
+              <input fxFlex="64" type="text" matInput placeholder="search " [(ngModel)]="value3">
+            </mat-form-field>
+          </div>
+          <div fxFlex="10">
+            <button color="accent" (click)="searchDataTable(value3); value3=''" mat-mini-fab>
+              <mat-icon>search</mat-icon>
+            </button> </div>
+        </div>
+        <hr>
+        <div *ngFor="let rat of dataTable; let i = index;" style="overflow: scroll" fxLayout="row" fxLayoutGap="40px"
+          fxLayoutAlign="start start">
+          <div fxLayout="row" fxLayoutAlign="start start" style="min-width: 200px; overflow: hidden;">
+            <mat-checkbox matTooltip="Mandatory" matTooltipPosition="above" style="margin-top: 5px;" [checked]="(rat.Mandatory === 'true')?true:false"
+              ariaLabel="mandatory" (change)="updateRationaleMadatory($event, rat.Rationale)">M</mat-checkbox>
+            <button class="pl-16" style="text-decoration: underline" mat-button
+              color="primary">{{rat.Rationale }}</button>
+            <button mat-button color="warn" (click)="deleteRatioanle(i,rat.Rationale,rat.WordPart)">X</button>
+          </div>
+          <div fxFlex="46" *ngFor="let word of rat.WordParts; let j = index" fxLayout="column"
+            fxLayoutAlign="start start">
+            <button mat-button color="accent" (click)="show = !show" fxFlex="33">{{word.wp}}</button>
+            <div [hidden]="!show">
+              <mat-checkbox [checked]="(word.infix == 'true')? true : false"
+                (change)="updateWordpart('infix', $event, j, rat.Rationale, word )">infix</mat-checkbox>
+            </div>
+            <div [hidden]="!show">
+              <mat-checkbox [checked]="(word.prefix == 'true')? true : false"
+                (change)="updateWordpart('prefix', $event, j, rat.Rationale, word )">prefix</mat-checkbox>
+            </div>
+            <div [hidden]="!show">
+              <mat-checkbox [checked]="(word.suffix == 'true')? true : false"
+                (change)="updateWordpart('suffix', $event, j, rat.Rationale, word )">suffix</mat-checkbox>
+            </div>
+            <button [hidden]="!show" mat-button style="color:red" (click)="deleteWordPart(i, j, rat.Rationale, word )"
+              fxFlex="33">delete</button>
+          </div>
+        </div>
+        <hr>
+      </div>
+      <div>
+        <h2 style="color:red">Re-Crafts</h2>
+      </div>
+      <div fxLayout="row" fxLayoutGap="30px" fxLayoutAlign="start space-around">
+        <div fxFlex="90" class="pl-16">
+          <mat-form-field appearance="outline">
+            <mat-label style="color:red">Enter Recraft Names</mat-label>
+            <input fxFlex="64" type="text" matInput placeholder="search " [(ngModel)]="value4">
+          </mat-form-field>
+        </div>
+        <div fxFlex="10">
+          <button style="margin: 10px;" (click)="addRecrafts(value4); value4=''" mat-mini-fab color="accent">Add
+            +</button>
+        </div>
+      </div>
+      <div *ngFor="let word of recraftdataTable; let j = index" fxLayout="row" fxLayoutGap="40px"
+        fxLayoutAlign="start start">
+        <div fxflex="20" style="min-width: 15%">
+          <button class="pl-16" style="text-decoration: underline" mat-button color="primary">{{word.recraft }}</button>
+        </div>
+        <div fxflex="20">
+          <mat-checkbox matTooltipPosition="above" matTooltip="Different Length"
+            [checked]="(word.DL === 'True')? true : false" (change)="updateRecraft('DL', $event, word.recraft)">
+            DL</mat-checkbox>
+        </div>
+        <div fxflex="20">
+          <mat-checkbox matTooltipPosition="above" matTooltip="Different Prefix"
+            [checked]="(word.DP === 'True')? true : false" (change)="updateRecraft('DP', $event, word.recraft)">
+            DP</mat-checkbox>
+        </div>
+        <div fxflex="20">
+          <mat-checkbox matTooltipPosition="above" matTooltip="Different Suffix"
+            [checked]="(word.DS === 'True')? true : false" (change)="updateRecraft('DS', $event, word.recraft)">
+            DS</mat-checkbox>
+        </div>
+        <div fxflex="20">
+          <mat-checkbox matTooltipPosition="above" matTooltip="Different Letter Position"
+            [checked]="(word.DLLP === 'True')? true : false" (change)="updateRecraft('DLLP', $event, word.recraft)">DLLP
+          </mat-checkbox>
+        </div>
+        <div fxflex="20">
+          <mat-checkbox matTooltipPosition="above" matTooltip="Different Length"
+            [checked]="(word.Scramble === 'True')? true : false"
+            (change)="updateRecraft('Scramble', $event, word.recraft)">
+            Scramble</mat-checkbox>
+        </div>
+        <button mat-button style="color:red" (click)="deleteRecraft(j, word.recraft)">delete</button>
+        <!-- </div>
+              </div> -->
+      </div>
+    </div>
+  </mat-tab>
+  <mat-tab label="Results">
+    <div fxLayout="row" fxLayoutGap="30px" fxLayoutAlign="start space-around">
+      <div fxLayout="row" fxFlex="100"  fxLayoutAlign="center center">
+        <div fxFlex="80">
+        <mat-form-field appearance="outline">
+          <mat-label style="color:red">Filter by Name</mat-label>
+          <input  #myInput type="text" matInput placeholder="search" (input)="filterByName(myInput.value)">
+        </mat-form-field></div><div fxFlex="20">
+        <button (click)="downloadExcel()" mat-raised-button color="accent">Download excel
+          <mat-icon>arrow_downward</mat-icon>
+        </button></div>
+      </div>
+    </div>
+    <mat-grid-list cols="7" rowHeight="2:1">
+      <mat-grid-tile>
+        <button mat-button (click)="sortByColumn('Rationale')" style="color:blue; font-weight: bold">Rationale</button>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <button mat-button (click)="sortByColumn('Name')" style="color:black; font-weight: bold">Name</button>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <button mat-button (click)="sortByColumn('FDA')" style="color:green; font-weight: bold">FDA</button>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <button mat-button (click)="sortByColumn('HC')" style="color:green; font-weight: bold">HC</button>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <button mat-button (click)="sortByColumn('EMA')" style="color:green; font-weight: bold">EMA</button>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <button mat-button (click)="sortByColumn('ANVISA')" style="color:green; font-weight: bold">ANVISA</button>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <button mat-button (click)="sortByColumn('COMBINED')" style="color:green; font-weight: bold">COMBINED</button>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <mat-grid-list *ngFor="let poca of pocaResults;" cols="7" rowHeight="2:1">
+      <mat-grid-tile>
+        <span style="color:blue; font-weight: bold">{{poca.rationale}}</span>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <span style="color:black; font-weight: bold">{{poca.Name}}</span>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <span *ngIf="poca.HC === 'Passed'" [style.color]="(poca.HC === 'Passed')?'green':'red'">{{poca.HC}}</span>
+        <span *ngIf="poca.HC === 'Failed'" [style.color]="(poca.HC === 'Failed')?'red':'red'">{{poca.HC}}</span>
+        <span *ngIf="poca.HC === 'Pending'" [style.color]="(poca.HC === 'Pending')?'darkgrey':'red'">{{poca.HC}}</span>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <span *ngIf="poca.FDA === 'Passed'" [style.color]="(poca.FDA === 'Passed')?'green':'red'">{{poca.FDA}}</span>
+        <span *ngIf="poca.FDA === 'Failed'" [style.color]="(poca.FDA === 'Failed')?'red':'red'">{{poca.FDA}}</span>
+        <span *ngIf="poca.FDA === 'Pending'"
+          [style.color]="(poca.FDA === 'Pending')?'darkgrey':'red'">{{poca.FDA}}</span>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <span *ngIf="poca.EMA === 'Passed'" [style.color]="(poca.EMA === 'Passed')?'green':'red'">{{poca.EMA}}</span>
+        <span *ngIf="poca.EMA === 'Failed'" [style.color]="(poca.EMA === 'Failed')?'red':'red'">{{poca.EMA}}</span>
+        <span *ngIf="poca.EMA === 'Pending'"
+          [style.color]="(poca.EMA === 'Pending')?'darkgrey':'red'">{{poca.EMA}}</span>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <span *ngIf="poca.ANVISA === 'Passed'"
+          [style.color]="(poca.ANVISA === 'Passed')?'green':'red'">{{poca.ANVISA}}</span>
+        <span *ngIf="poca.ANVISA === 'Failed'"
+          [style.color]="(poca.ANVISA === 'Failed')?'red':'red'">{{poca.ANVISA}}</span>
+        <span *ngIf="poca.ANVISA === 'Pending'"
+          [style.color]="(poca.ANVISA === 'Pending')?'darkgrey':'red'">{{poca.ANVISA}}</span>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <span *ngIf="poca.COMBINED === 'Passed'"
+          [style.color]="(poca.COMBINED === 'Passed')?'green':'red'">{{poca.COMBINED}}</span>
+        <span *ngIf="poca.COMBINED === 'Failed'"
+          [style.color]="(poca.COMBINED === 'Failed')?'red':'red'">{{poca.COMBINED}}</span>
+        <span *ngIf="poca.COMBINED === 'Pending'"
+          [style.color]="(poca.COMBINED === 'Pending')?'darkgrey':'red'">{{poca.COMBINED}}</span>
+      </mat-grid-tile>
+      <hr>
+    </mat-grid-list>
+  </mat-tab>
+</mat-tab-group>
+
+
+
+<!-- OLD <CODE>  -->
+<!-- <div class="fuse-card" *ngFor="let src of pictures; let i = index" [id]="src.docId">
     <img [src]="src.data" alt="Red dot" *ngIf="src.format === 'image/jpeg'" style="height: 200px; padding: 10px" />
     <div class="pdf-container">
       <pdf-viewer [src]="src.data" [render-text]="true" [zoom]="0.3" [show-all]="false" *ngIf="src.format !== 'image/jpeg'"></pdf-viewer>
@@ -24,5 +270,4 @@
         <mat-icon >delete</mat-icon>
       </button>
     </div>
-  </div>
-</div>
+  </div> -->

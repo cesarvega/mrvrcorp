@@ -10,4 +10,10 @@
     // min-height: 200px;
     margin-bottom: 20px;
     padding-bottom: 100px;
+    max-width: 100%;
+    min-width: 100%;
 }
+
+[hidden] {
+    display: none !important;
+  }
