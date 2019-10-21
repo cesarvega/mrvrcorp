@@ -20,13 +20,14 @@ import { LayoutModule } from 'app/layout/layout.module';
 import { DynamicProfileModule } from './main/dynamic-profile/dynamic-profile.module';
 import { ToastrModule } from 'ngx-toastr';
 import { APP_BASE_HREF } from '@angular/common';
+import { MrvrModule } from './main/mrvr/mrvr.module';
 // import { SampleModule } from './main/sample/sample.module';
 // import { NameRulesComponent } from './main/name-rules/name-rules.component';
 
 const appRoutes: Routes = [
     {
         path      : '**',
-        redirectTo: 'names'
+        redirectTo: 'mrvr'
     }
 ];
 
@@ -60,7 +61,7 @@ const appRoutes: Routes = [
 
         // App modules
         LayoutModule,
-        // SampleModule
+        MrvrModule
     ],
     bootstrap   : [
         AppComponent
