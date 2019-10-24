@@ -11,12 +11,14 @@ const httpOptions = {
 })
 export class MrvrService {
 
-  baseUrl = 'https://us-central1-bsgur-fdb7a.cloudfunctions.net/app/';
+  baseUrl = 'http://localhost:5001/fire-6e216/us-central1/app';
+  // baseUrl = 'https://us-central1-bsgur-fdb7a.cloudfunctions.net/app';
+  // baseUrl = 'https://us-central1-bsgur-fdb7a.cloudfunctions.net/app/';
   // baseUrl = 'http://localhost:5001/bsgur-fdb7a/us-central1/app';
   constructor(private httpClient: HttpClient) { }
 
 
   getItemData(): Observable<any> {
-    return this.httpClient.get(this.baseUrl, httpOptions);
+    return this.httpClient.get(this.baseUrl);
   }
 }
