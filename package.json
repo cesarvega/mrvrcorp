@@ -52,6 +52,7 @@
     "moment": "2.24.0",
     "ng2-charts": "2.3.0",
     "ng2-imageupload": "1.4.2",
+    "ng2-pdf-viewer": "6.0.1",
     "ngrx-store-freeze": "0.2.4",
     "ngx-color-picker": "8.1.0",
     "ngx-cookie-service": "2.2.0",
