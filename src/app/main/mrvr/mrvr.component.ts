@@ -35,10 +35,28 @@ export class MrvrComponent implements OnInit {
     };
   }
   ngOnInit(): void {
-  this._mrvrservice.getItemData().subscribe( res => {
-    console.log(res);
-    
-  });
-  }
+    // this._mrvrservice.getItemData().subscribe(res => {
+    //   console.log(res);
 
+    // });
+
+    // this._mrvrservice.putItemData().subscribe(res => {
+    //   console.log(res);
+
+    // });
+
+    // this._mrvrservice.postItemData().subscribe( res => {
+    //     console.log(res);
+    // });
+
+    // this._mrvrservice.getItemDatabyId('34').subscribe(res => {
+    //   console.log(res);
+
+    // });
+
+    // this._mrvrservice.deleteItemData().subscribe( res => {
+    //   console.log(res);
+
+    // });
+  }
 }
