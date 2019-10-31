@@ -23,10 +23,10 @@ export class MrvrComponent implements OnInit {
           hidden: true
         },
         toolbar: {
-          hidden: true
+          hidden: false
         },
         footer: {
-          hidden: true
+          hidden: false
         },
         sidepanel: {
           hidden: false
