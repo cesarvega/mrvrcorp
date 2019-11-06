@@ -29,6 +29,54 @@
         </mat-form-field>
 
         <mat-form-field appearance="outline">
+          <mat-label>amount</mat-label>
+          <input type="number" matInput placeholder="$ Amount" formControlName="amount">
+          <mat-error *ngIf="!formErrors.amount.required">
+            amount is required!
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Card Number</mat-label>
+          <input type="number" matInput placeholder="card Number" formControlName="cardNumber">
+          <mat-error *ngIf="!formErrors.cardNumber.required">
+            cardNumber is required!
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Exp Date</mat-label>
+          <input type="number" matInput placeholder="MM DD" formControlName="expDate">
+          <mat-error *ngIf="!formErrors.expDate.required">
+            expDate is required!
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>CCV</mat-label>
+          <input type="number" matInput placeholder="ccv" formControlName="ccv">
+          <mat-error *ngIf="!formErrors.ccv.required">
+            ccv is required!
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Zipcode</mat-label>
+          <input type="number" matInput placeholder="33131" formControlName="zipcode">
+          <mat-error *ngIf="!formErrors.zipcode.required">
+            zipcode is required!
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Billing Address</mat-label>
+          <input type="number" matInput placeholder="address" formControlName="billingAddress">
+          <mat-error *ngIf="!formErrors.billingAddress.required">
+            billingAddress is required!
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
           <mat-label>Reason for Communication</mat-label>
           <mat-select placeholder="Reason for Communication" formControlName="TypeOfInquiry">
             <mat-option *ngFor="let contactReason of reasons" [value]="contactReason">
@@ -45,13 +93,7 @@
           <input matInput formControlName="SurveyName">
         </mat-form-field>
 
-        <mat-form-field appearance="outline">
-          <mat-label>Message</mat-label>
-          <textarea rows='3' cols='50' matInput placeholder="message" formControlName="Message"></textarea>
-          <mat-error *ngIf="!formErrors.Message.required">
-            5 characters minimum message is required!
-          </mat-error>
-        </mat-form-field>
+
 
         <button mat-raised-button color="accent" (click)="onSubmit()" class="submit-button" aria-label="LOG IN"
           [disabled]="stripeForm.invalid">

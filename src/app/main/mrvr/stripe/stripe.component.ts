@@ -1,15 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FuseConfigService } from '@fuse/services/config.service';
 import { MrvrService } from '../mrvr.service';
-import { FormControl, FormGroup, Validators, FormGroupDirective, NgForm, FormBuilder } from '@angular/forms';
-import { ErrorStateMatcher } from '@angular/material';
-/** Error when invalid control is dirty, touched, or submitted. */
-export class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    const isSubmitted = form && form.submitted;
-    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
-  }
-}
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+
+
 
 @Component({
   selector: 'app-stripe',
@@ -21,6 +15,9 @@ export class StripeComponent implements OnInit {
   'Website Questions/Comments', 'Profile/Registration Questions Comments', 'Change Username']; 
   stripeForm: FormGroup;
   formErrors: any;
+  card: any;
+  error: string;
+  emailAddress: any;
   constructor(
     private _fuseConfigService: FuseConfigService,
     private _mrvrservice: MrvrService,
@@ -45,11 +42,16 @@ export class StripeComponent implements OnInit {
     };
 
     this.formErrors = {
+      senderName: {},
       emailFrom: {},
-      Message: {},
+      amount: {},
+      cardNumber: {},
+      expDate: {},
+      ccv: {},
+      zipcode: {},
+      billingAddress: {},
       TypeOfInquiry: {},
       SurveyName: {},
-      senderName: {}
     };
   
   }
@@ -57,16 +59,31 @@ export class StripeComponent implements OnInit {
 
 ngOnInit(): void {
   this.stripeForm = this.fb.group({
+    senderName: ['cesar', [Validators.required, Validators.minLength(4)]],
     emailFrom: ['cvega@gmail.com', [Validators.required, Validators.email]],
+    amount: ['13', [Validators.required, Validators.minLength(5)]],
+    cardNumber: ['4242424242424242', [Validators.required, Validators.minLength(5)]],
+    expDate: ['07 23', [Validators.required, Validators.minLength(5)]],
+    ccv: ['143', [Validators.required, Validators.minLength(5)]],
+    zipcode: ['33131', [Validators.required, Validators.minLength(5)]],
+    billingAddress: ['201 SE 2 ave', [Validators.required, Validators.minLength(5)]],
     TypeOfInquiry: ['', Validators.required],
     SurveyName: [''],
-    senderName: ['cesar', [Validators.required, Validators.minLength(4)]],
-    Message: ['heloo world', [Validators.required, Validators.minLength(5)]]
   });
 }
 
-onSubmit(): void {
+  async onSubmit(): Promise<void> {
   console.log(this.stripeForm.value);
+  const { token, error } = await stripe.createToken(this.card, {
+    email: this.emailAddress
+  });
+
+  if (error) {
+    console.log('Something is wrong:', error);
+  } else {
+    console.log('Success!', token);
+    // ...send the token to the your backend to process the charge
+  }
 
 }
 
