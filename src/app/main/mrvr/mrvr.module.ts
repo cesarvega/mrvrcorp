@@ -9,7 +9,17 @@ import { UsersComponent } from './users/users.component';
 import { StripeComponent } from './stripe/stripe.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ClientsComponent } from './clients/clients.component';
+import { HomepageComponent } from './homepage/homepage.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
 const routes: Routes = [
+  {
+    path: 'home',
+    component: HomepageComponent
+  },
+  {
+    path: 'detail',
+    component: ProductDetailComponent
+  },
   {
     path: 'dash',
     component: MrvrComponent
@@ -37,7 +47,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [MrvrComponent, ProductsComponent, VendorsComponent, UsersComponent, StripeComponent, ClientsComponent],
+  declarations: [MrvrComponent, ProductsComponent, VendorsComponent, UsersComponent, StripeComponent, ClientsComponent, HomepageComponent, ProductDetailComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),

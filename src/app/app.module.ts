@@ -27,7 +27,7 @@ import { MrvrModule } from './main/mrvr/mrvr.module';
 const appRoutes: Routes = [
     {
         path      : '**',
-        redirectTo: 'dash'
+        redirectTo: 'home'
     }
 ];
 
