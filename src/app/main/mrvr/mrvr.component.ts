@@ -20,13 +20,13 @@ export class MrvrComponent implements OnInit {
     this._fuseConfigService.config = {
       layout: {
         navbar: {
-          hidden: true
+          hidden: false
         },
         toolbar: {
-          hidden: true
+          hidden: false
         },
         footer: {
-          hidden: true
+          hidden: false
         },
         sidepanel: {
           hidden: false
