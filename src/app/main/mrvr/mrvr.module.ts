@@ -11,6 +11,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ClientsComponent } from './clients/clients.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatInputModule, MatExpansionModule, MatIconModule, MatOptionModule, MatSelectModule, ErrorStateMatcher, ShowOnDirtyErrorStateMatcher, MatDialogModule  } from '@angular/material';
 const routes: Routes = [
   {
     path: 'home',
@@ -53,7 +54,19 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     FlexLayoutModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDialogModule,
+    MatExpansionModule,
+    MatIconModule,
+    MatOptionModule,
+    MatSelectModule,
+  ],
+  providers: [
+    {provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher}
   ]
 })
 export class MrvrModule { }
