@@ -1,18 +1,84 @@
 <div id="product" fxLayout="column">
+    <div id="product-form-wrapper" fxLayout="column" fxLayoutAlign="start start">
+        
+        <!-- CONTENT CARD -->
+        <div class="content-card" [ngClass]="{'current-todo-selected':currentTodo}">
 
-        <div id="product-form-wrapper" fxLayout="column" fxLayoutAlign="center center">
-      
-          <div id="product-form">
-      
-            <div class="logo">
-              <img src="assets/images/logos/bi-logo-with-tagline.svg">
+                <!-- CONTENT TOOLBAR -->
+                <div class="toolbar px-24 py-8">
+    
+                    <div class="todo-selection" fxFlex="row" fxLayoutAlign="start center">
+                        <mat-checkbox (click)="toggleSelectAll()" [checked]="hasSelectedTodos"
+                                      [indeterminate]="isIndeterminate"></mat-checkbox>
+    
+                        <button mat-icon-button [matMenuTriggerFor]="selectMenu">
+                            <mat-icon>arrow_drop_down</mat-icon>
+                        </button>
+                        <mat-menu #selectMenu="matMenu">
+                            <button mat-menu-item (click)="selectTodos()">All</button>
+                            <button mat-menu-item (click)="deselectTodos()">None</button>
+                            <button mat-menu-item (click)="selectTodos('read', true)">Read</button>
+                            <button mat-menu-item (click)="selectTodos('read', false)">Unread</button>
+                            <button mat-menu-item (click)="selectTodos('starred', true)">Starred</button>
+                            <button mat-menu-item (click)="selectTodos('starred', false)">Unstarred</button>
+                            <button mat-menu-item (click)="selectTodos('important', true)">Important</button>
+                            <button mat-menu-item (click)="selectTodos('important', false)">Unimportant</button>
+                        </mat-menu>
+    
+                        <div class="toolbar-separator" *ngIf="hasSelectedTodos"></div>
+    
+                        <button mat-icon-button [matMenuTriggerFor]="labelMenu" *ngIf="hasSelectedTodos">
+                            <mat-icon class="secondary-text">label</mat-icon>
+                        </button>
+                        <mat-menu #labelMenu="matMenu">
+                            <button mat-menu-item *ngFor="let tag of tags" (click)="toggleTagOnSelectedTodos(tag.id)">
+                                tag.title
+                            </button>
+                        </mat-menu>
+                    </div>
+    
+                    <div *ngIf="currentTodo" fxHide.gt-lg>
+                        <button mat-icon-button (click)="deselectCurrentTodo()">
+                            <mat-icon class="secondary-text">arrow_back</mat-icon>
+                        </button>
+                    </div>
+    
+                </div>
+                <!-- / CONTENT TOOLBAR -->
+    
+                <!-- CONTENT -->
+                <div class="content" fxFlexAlign="row">
+                    
+                            
+                            
+                    <!-- <todo-list fusePerfectScrollbar fxFlex></todo-list>
+                    <todo-details fusePerfectScrollbar fxFlex></todo-details> -->
+                </div>
+                <!-- / CONTENT -->
+    
             </div>
-      
-            <div class="mat-subheading-2">Hi, how can we help you?</div>
-               
-      
-          </div>
-      
+            <!-- / CONTENT CARD -->
+        <div id="product-form">           
+            <div class="mat-subheading-2">PRODUCT LIST</div>
+            <div *ngFor="let item of products; let i = index">
+                <div class="fuse-card">
+                    <div class="p-16" fxLayout="row" fxLayoutAlign="space-between center">
+                        <div class="pr-16">
+                            <div class="h4 secondary-text">NAME</div>
+                            <div class="h1">{{item.name}}</div>
+                        </div>
+                        <div class="w-80 h-80">
+                            <img src="assets/images/cards/card2-small.jpg">
+                      </div>
+                    </div>
+                    <div class="p-16 pt-0 line-height-1.75">
+                        {{item.description}}
+                    </div>
+                    <div class="p-8 pt-0" fxLayout="row" fxLayoutAlign="end center">
+                        <button mat-button color="accent">EDIT</button>
+                        <button mat-button color="accent">DELETE</button>
+                    </div>
+                </div>
+            </div>
         </div>
-      
-      </div>
+    </div>

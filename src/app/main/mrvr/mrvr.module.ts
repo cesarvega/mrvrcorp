@@ -10,16 +10,16 @@ import { StripeComponent } from './stripe/stripe.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ClientsComponent } from './clients/clients.component';
 import { HomepageComponent } from './homepage/homepage.component';
-import { ProductDetailComponent } from './product-detail/product-detail.component';
-import { MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatInputModule, MatExpansionModule, MatIconModule, MatOptionModule, MatSelectModule, ErrorStateMatcher, ShowOnDirtyErrorStateMatcher, MatDialogModule  } from '@angular/material';
+import { MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatInputModule, MatExpansionModule, MatIconModule, MatOptionModule, MatSelectModule, ErrorStateMatcher, ShowOnDirtyErrorStateMatcher, MatDialogModule, MatDatepickerModule, MatMenuModule, MatRippleModule  } from '@angular/material';
+import { ProdutDetailComponent } from './products/produt-detail/produt-detail.component';
 const routes: Routes = [
   {
     path: 'home',
     component: HomepageComponent
   },
   {
-    path: 'detail',
-    component: ProductDetailComponent
+    path: 'product-detail',
+    component: ProdutDetailComponent
   },
   {
     path: 'dash',
@@ -48,7 +48,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [MrvrComponent, ProductsComponent, VendorsComponent, UsersComponent, StripeComponent, ClientsComponent, HomepageComponent, ProductDetailComponent],
+  declarations: [MrvrComponent, ProductsComponent, VendorsComponent, UsersComponent, StripeComponent, ClientsComponent, HomepageComponent, ProdutDetailComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
@@ -64,6 +64,10 @@ const routes: Routes = [
     MatIconModule,
     MatOptionModule,
     MatSelectModule,
+    MatDatepickerModule,
+    MatMenuModule,
+    MatRippleModule,
+
   ],
   providers: [
     {provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher}

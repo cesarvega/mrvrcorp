@@ -13,17 +13,22 @@ export class MrvrService {
 
 
   baseUrl = 'http://localhost:5001/fire-6e216/us-central1/app';
-  // baseUrl = 'https://us-central1-bsgur-fdb7a.cloudfunctions.net/app';
+  // baseUrl = 'https://us-central1-bsgur-fdb7a.cloudfunctions.net/app/';
   // baseUrl = 'https://us-central1-bsgur-fdb7a.cloudfunctions.net/app/';
   // baseUrl = 'http://localhost:5001/bsgur-fdb7a/us-central1/app';
 
   constructor(private httpClient: HttpClient) { }
 
+  getIProducts(): Observable<any> {
+    return this.httpClient.get('https://us-central1-bsgur-fdb7a.cloudfunctions.net/app/product/');
+  }
 
+  
   getItemData(): Observable<any> {
     return this.httpClient.get(this.baseUrl);
 
   }
+
 
   getItemDatabyId(id: string): Observable<any> {
     id = 'ZP6ZTdpEPRlBlwyDPv0s';

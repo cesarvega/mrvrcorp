@@ -8,6 +8,7 @@ import { MrvrService } from '../mrvr.service';
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent implements OnInit {
+  products: any;
 
   constructor(
     private _fuseConfigService: FuseConfigService,
@@ -32,6 +33,14 @@ export class ProductsComponent implements OnInit {
     };
   }
   ngOnInit(): void {
+    this._mrvrservice.getIProducts().subscribe( res => {
+      console.log(res);
+      this.products = Object.keys(res).map(function(productsIndex){
+        let product = res[productsIndex];
+        return product;
+    });
+      
+    })
   }
 
 }
