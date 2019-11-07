@@ -8,18 +8,18 @@
         background-color: whitesmoke;
         background-size: cover;
 
-        #home-form-wrapper {
+        .home-form-wrapper {
             // flex: 1 0 auto;
-            padding: 32px;
+            padding: 10px;
 
             @include media-breakpoint('xs') {
-                padding: 16px;
+                padding: 6px;
             }
 
-            #home-form {
+            .home-form {
                 width: 100%;
                 max-width: 100%;
-                padding: 32px;
+                padding: 12px;
                 background: #FFFFFF;
                 text-align: center;
                 @include mat-elevation(16);
@@ -32,6 +32,14 @@
 
                 .logo {
                     width: 200px;
+                    margin: 32px auto;
+                }
+                .logomain {
+                    width: 500px;
+                    margin: 32px auto;
+                }
+                .logotop {
+                    width: 100px;
                     margin: 32px auto;
                 }
 

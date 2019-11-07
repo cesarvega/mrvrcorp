@@ -1,22 +1,46 @@
-<div id="home" class="page-layout carded left-sidebar inner-scroll" fxLayout="column" fxLayoutAlign="start center">
+<div id="home" class="page-layout" fxLayout="column" fxLayoutAlign="start center">
 
-    <div id="home-form-wrapper" style="background-color: red;" fxLayout="column" >
+    <div class="home-form-wrapper" fxLayout="column">
 
-        <div id="home-form" style="background-color: purple;">
-
-            <div style="background-color: yellow;" fxLayout="row">
-                <div id="home-form">
-                    <div class="logo">
+        <div class="home-form">
+            <!-- MENU -->
+            <div class="home-form-wrapper" style="background-color: black;color:white" fxLayout="row"  fxLayoutAlign="end center">
+                <div fxFlex="20" fxLayout="row" >
+                        <div class="logotop">
+                                <img src="/assets/images/Cigars.png">
+                            </div>
+                </div>
+                <div fxFlex="60" fxLayout="row" >                       
+                </div>
+                <div  fxFlex="20" fxLayout="row" fxLayoutGap="20px"  fxLayoutAlign="end center">                       
+                    <div class="mat-subheading-2">Home</div>
+                    <div class="mat-subheading-2">About</div>
+                    <div class="mat-subheading-2">Brands</div>
+                    <div class="mat-subheading-2">Products</div>
+                    <div class="mat-subheading-2">MyAccount</div>
+                    <div class="mat-subheading-2">Contact</div>
+                    <!-- <div class="mat-subheading-2">Cart</div> -->
+                </div>
+            </div>
+            <!-- CAROUSEL -->
+            <div style="background-color: orangered;" fxLayout="row" >
+                <div class="home-form" fxLayout="row" fxLayoutAlign="center center">
+                    <div>
+                        <mat-icon class="s-40">arrow_left</mat-icon>
+                    </div>
+                    <div class="logomain">
                         <img src="assets/images/logos/bi-logo-with-tagline.svg">
                     </div>
-                    <div class="mat-subheading-2">Hi, how can we help you?</div>
+                    <div>
+                        <mat-icon class="s-40">arrow_right</mat-icon>
+                    </div>
                 </div>
             </div>
 
-            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="start center">
 
-                <div id="home-form-wrapper" style="background-color: lightsalmon;" fxLayout="column">
-                    <div id="home-form">
+                <div class="home-form-wrapper" style="background-color: lightsalmon;" fxLayout="column">
+                    <div class="home-form">
                         <div class="logo">
                             <img src="assets/images/logos/bi-logo-with-tagline.svg">
                         </div>
@@ -24,8 +48,8 @@
                     </div>
                 </div>
 
-                <div id="home-form-wrapper" style="background-color: lightgreen;" fxLayout="row">
-                    <div id="home-form">
+                <div class="home-form-wrapper" style="background-color: lightgreen;" fxLayout="row">
+                    <div class="home-form">
                         <div class="logo">
                             <img src="assets/images/logos/bi-logo-with-tagline.svg">
                         </div>
@@ -33,8 +57,8 @@
                     </div>
                 </div>
 
-                <div id="home-form-wrapper" style="background-color: brown;" fxLayout="row">
-                    <div id="home-form">
+                <div class="home-form-wrapper" style="background-color: brown;" fxLayout="row">
+                    <div class="home-form">
                         <div class="logo">
                             <img src="assets/images/logos/bi-logo-with-tagline.svg">
                         </div>
@@ -45,9 +69,9 @@
             </div>
 
 
-            <div style="background-color: blue;" fxLayout="row">
+            <div class="home-form-wrapper" style="background-color: blue;" fxLayout="row">
 
-                <div id="home-form">
+                <div class="home-form">
 
                     <div class="logo">
                         <img src="assets/images/logos/bi-logo-with-tagline.svg">
@@ -62,7 +86,7 @@
 
             <div style="background-color: violet;" fxLayout="row">
 
-                <div id="home-form">
+                <div class="home-form">
 
                     <div class="logo">
                         <img src="assets/images/logos/bi-logo-with-tagline.svg">
