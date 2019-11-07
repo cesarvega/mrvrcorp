@@ -27,7 +27,7 @@ import { MrvrModule } from './main/mrvr/mrvr.module';
 const appRoutes: Routes = [
     {
         path      : '**',
-        redirectTo: 'mrvr'
+        redirectTo: 'home'
     }
 ];
 
@@ -67,7 +67,7 @@ const appRoutes: Routes = [
         AppComponent
     ],
     providers: [
-        { provide: APP_BASE_HREF, useValue: '/BNRSRules/' },
+        { provide: APP_BASE_HREF, useValue: '/tabacco/' },
     ]
 })
 export class AppModule

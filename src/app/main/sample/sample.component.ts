@@ -5,6 +5,8 @@ import { FieldConfig2, FieldGroupConfig } from '../dynamic-profile/field.interfa
 import { locale as english } from './i18n/en';
 import { locale as turkish } from './i18n/tr';
 import { Validators } from '@angular/forms';
+import { MrvrService } from '../mrvr/mrvr.service';
+import { FuseConfigService } from '@fuse/services/config.service';
 
 @Component({
     selector: 'sample',
@@ -18,8 +20,28 @@ export class SampleComponent implements OnInit {
      * @param {FuseTranslationLoaderService} _fuseTranslationLoaderService
      */
     constructor(
-        private _fuseTranslationLoaderService: FuseTranslationLoaderService
-    ) {
+        private _fuseTranslationLoaderService: FuseTranslationLoaderService, private _fuseConfigService: FuseConfigService,
+        private _mrvrservice: MrvrService
+      ) {
+        // Configure the layout
+        this._fuseConfigService.config = {
+          layout: {
+            navbar: {
+                
+              hidden: false
+            },
+            toolbar: {
+              hidden: false
+            },
+            footer: {
+              hidden: false
+            },
+            sidepanel: {
+              hidden: false
+            }
+          }
+        };
+      
         this._fuseTranslationLoaderService.loadTranslations(english, turkish);
     }
     // / tabConfig = this.fieldData;

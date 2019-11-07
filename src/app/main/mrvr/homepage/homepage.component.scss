@@ -1,0 +1,320 @@
+header {
+    background-color: #000000;
+    padding: 8px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+header a#cigars {
+    width: 100px;
+    height: 55px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-image: url('/assets/images/Cigars.png');
+}
+
+header nav a {
+    font-size: 16px;
+    color: #ffffff;
+    margin-left: 30px;
+    font-weight: bold;
+}
+
+header nav a:hover {
+    text-decoration: none;
+    color: #955514;
+    transition: 0.2s all linear;
+}
+
+section#banner {
+    width: 100%;
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-image: url('/assets/images/banner.jpg');
+}
+
+section#banner div.overlay {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+section#banner h1 {
+    color: #ffffff;
+    font-size: 50px;
+    font-weight: bold;
+    letter-spacing: 8px;
+}
+
+section#banner h1 span { font-weight: normal; }
+
+
+section#productSec {
+    margin-top: -300px;
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&0+0,0.98+86 */
+    background: -moz-linear-gradient(top,  rgba(255,255,255,0) 0%, rgba(255,255,255,0.98) 86%, rgba(255,255,255,0.98) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,0.98) 86%,rgba(255,255,255,0.98) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  rgba(255,255,255,0) 0%,rgba(255,255,255,0.98) 86%,rgba(255,255,255,0.98) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#faffffff',GradientType=0 ); /* IE6-9 */
+
+
+}
+
+section#productSec aside {
+    width: calc(95% / 3);
+}
+
+section#productSec aside div.imgSec {
+    height: 300px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-end;
+}
+
+section#productSec aside div.imgSec h2 {
+    font-size: 35px;
+    background-color: rgba(0,0,0,0.8);
+    text-align: center;
+    color: #ffffff;
+    padding: 8px 0;
+}
+
+section#productSec aside p {
+    font-size: 14px;
+    color: #9f9f9f;
+    padding: 5px 0;
+    text-align: center;
+}
+
+section#featureSec h2 {
+    text-align: center;
+    font-size: 40px;
+    color: #925312;
+    padding-bottom: 10px;
+    border-bottom: #925312 solid thin;
+    margin-bottom: 40px;
+}
+
+section#featureSec aside {
+    width: calc(95% / 4);
+    text-align: center;
+    margin: 20px 0;
+}
+
+section#featureSec aside div.imgSec {
+    width: 100%;
+    height: 300px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 90%;
+    background-color: #F1EFEE;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+section#featureSec aside h3 {
+    font-size: 35px;
+    font-weight: bold;
+    font-style: italic;
+    color: #925312;
+}
+
+section#featureSec aside p {
+    font-size: 15px;
+    color: #383838;
+}
+
+section#featureSec aside a.btn {
+    background-color: #925312;
+    color: #ffffff;
+}
+
+section#aboutSec {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url('/assets/images/about-banner.jpg');
+    background-attachment: fixed;
+    text-align: center;
+}
+
+section#aboutSec div.overlay { background-color: rgba(0,0,0,0.5); }
+
+section#aboutSec h2 {
+    color: #ffffff;
+    font-size: 35px;
+    font-weight: bold;
+    font-style: italic;
+}
+
+section#aboutSec h4 {
+    font-size: 20px;
+    color: #ffffff;
+    margin: 20px 0;
+}
+
+section#aboutSec p {
+    font-size: 15px;
+    color: #f2f2f2;
+}
+
+
+@import "src/@fuse/scss/fuse";
+
+:host {
+
+    #home {
+        width: 100%;
+        // background: url('/assets/images/backgrounds/dark-material-bg.jpg') no-repeat;
+        background-color: whitesmoke;
+        background-size: cover;
+
+        #home-form-wrapper {
+            flex: 1 0 auto;
+            padding: 32px;
+
+            @include media-breakpoint('xs') {
+                padding: 16px;
+            }
+
+            #home-form {
+                width: 484px;
+                max-width: 484px;
+                padding: 32px;
+                background: #FFFFFF;
+                text-align: center;
+                @include mat-elevation(16);
+
+                @include media-breakpoint('xs') {
+                    padding: 24px;
+                    width: 100%;
+                    max-width: 384px;
+                }
+
+                .logo {
+                    width: 128px;
+                    margin: 32px auto;
+                }
+
+                .title {
+                    font-size: 20px;
+                    margin: 16px 0 32px 0;
+                }
+
+                form {
+                    width: 100%;
+                    text-align: left;
+
+                    mat-form-field {
+                        width: 100%;
+                    }
+
+                    mat-checkbox {
+                        margin: 0;
+                    }
+
+                    .remember-forgot-password {
+                        font-size: 13px;
+                        margin-top: 8px;
+
+                        .remember-me {
+                            margin-bottom: 16px
+                        }
+
+                        .forgot-password {
+                            font-size: 13px;
+                            font-weight: 500;
+                            margin-bottom: 16px
+                        }
+                    }
+
+                    .submit-button {
+                        width: 220px;
+                        margin: 16px auto;
+                        display: block;
+
+                        @include media-breakpoint('xs') {
+                            width: 90%;
+                        }
+                    }
+                }
+
+                .register {
+                    margin: 32px auto 24px auto;
+                    font-weight: 500;
+
+                    .text {
+                        margin-right: 8px;
+                    }
+                }
+
+                .separator {
+                    font-size: 15px;
+                    font-weight: 600;
+                    margin: 24px auto;
+                    position: relative;
+                    overflow: hidden;
+                    width: 100px;
+                    color: rgba(0, 0, 0, 0.54);
+
+                    .text {
+                        display: inline-flex;
+                        position: relative;
+                        padding: 0 8px;
+                        z-index: 9999;
+
+                        &:before, &:after {
+                            content: '';
+                            display: block;
+                            width: 30px;
+                            position: absolute;
+                            top: 10px;
+                            border-top: 1px solid rgba(0, 0, 0, 0.12);
+                        }
+
+                        &:before {
+                            right: 100%;
+                        }
+
+                        &:after {
+                            left: 100%;
+                        }
+                    }
+                }
+
+                button {
+
+                    &.google,
+                    &.facebook {
+                        width: 192px;
+                        text-transform: none;
+                        color: #FFFFFF;
+                        font-size: 13px;
+                    }
+
+                    @include media-breakpoint('xs') {
+                        width: 80%;
+                    }
+
+                    &.google {
+                        background-color: #D73D32;
+                        margin-bottom: 8px;
+                    }
+
+                    &.facebook {
+                        background-color: rgb(63, 92, 154);
+                    }
+                }
+            }
+        }
+    }
+}
