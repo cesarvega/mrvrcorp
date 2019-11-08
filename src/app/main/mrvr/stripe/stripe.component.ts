@@ -4,6 +4,7 @@ import { MrvrService } from '../mrvr.service';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { environment } from 'environments/environment';
 import { PaymentService } from './payment.service';
+import * as firebase from 'firebase';
 
 
 
@@ -24,6 +25,7 @@ export class StripeComponent implements OnInit {
 
   //stripe stuff
   handler: any;
+  userId: any;
   amount = 500;
 
 
@@ -84,11 +86,44 @@ ngOnInit(): void {
   // stripe 
   this.handler = StripeCheckout.configure({
     key: environment.stripeKey,
-    image: '/your/awesome/logo.jpg',
+    image: 'assets/images/logos/bi-logo-with-tagline.svg',
     locale: 'auto',
     token: token => {
-      this.paymentSvc.processPayment(token, this.amount)
+      this.paymentSvc.processPayment(token, this.amount, localStorage.getItem('userId'))
+      // .then(res =>{
+      //   console.log(res);
+      // })
     }
+  });
+
+  firebase.auth().signInAnonymously().catch(function(error) {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    // ...
+  });
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      // User is signed in.
+      var isAnonymous = user.isAnonymous;
+      this.userId = user.uid;
+      localStorage.setItem('userId', user.uid);
+      // var userRef = app.dataInfo.child(app.users);
+  
+      // var useridRef = userRef.child(app.userid);
+  
+      // useridRef.set({
+      //   locations: "",
+      //   theme: "",
+      //   colorScheme: "",
+      //   food: ""
+      // });
+  
+    } else {
+      // User is signed out.
+      // ...
+    }
+    // ...
   });
 }
 

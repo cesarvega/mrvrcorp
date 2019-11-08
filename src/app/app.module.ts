@@ -26,6 +26,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 // import { SampleModule } from './main/sample/sample.module';
 // import { NameRulesComponent } from './main/name-rules/name-rules.component';
 
@@ -69,6 +70,8 @@ const config = environment.firebaseConfig;
         AngularFirestoreModule, // firestore
         AngularFireAuthModule, // auth
         AngularFireStorageModule, // storage
+        AngularFireDatabaseModule,
+        
 
         // App modules
         LayoutModule,
