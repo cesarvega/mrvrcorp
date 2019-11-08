@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { FuseConfigService } from '@fuse/services/config.service';
 import { MrvrService } from '../mrvr.service';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { environment } from 'environments/environment';
+import { PaymentService } from './payment.service';
 
 
 
@@ -18,10 +20,18 @@ export class StripeComponent implements OnInit {
   card: any;
   error: string;
   emailAddress: any;
+
+
+  //stripe stuff
+  handler: any;
+  amount = 500;
+
+
   constructor(
     private _fuseConfigService: FuseConfigService,
     private _mrvrservice: MrvrService,
-    public fb: FormBuilder
+    public fb: FormBuilder,
+    private paymentSvc: PaymentService
   ) {
     // Configure the layout
     this._fuseConfigService.config = {
@@ -70,22 +80,45 @@ ngOnInit(): void {
     TypeOfInquiry: ['', Validators.required],
     SurveyName: [''],
   });
+
+  // stripe 
+  this.handler = StripeCheckout.configure({
+    key: environment.stripeKey,
+    image: '/your/awesome/logo.jpg',
+    locale: 'auto',
+    token: token => {
+      this.paymentSvc.processPayment(token, this.amount)
+    }
+  });
 }
 
-  async onSubmit(): Promise<void> {
-  console.log(this.stripeForm.value);
-  const { token, error } = await stripe.createToken(this.card, {
-    email: this.emailAddress
+handlePayment() {
+  this.handler.open({
+    name: 'FireStarter',
+    excerpt: 'Deposit Funds to Account',
+    amount: this.amount
   });
+}
 
-  if (error) {
-    console.log('Something is wrong:', error);
-  } else {
-    console.log('Success!', token);
-    // ...send the token to the your backend to process the charge
+@HostListener('window:popstate')
+  onPopstate() {
+    this.handler.close()
   }
 
-}
+//   async onSubmit(): Promise<void> {
+//   console.log(this.stripeForm.value);
+//   const { token, error } = await stripe.createToken(this.card, {
+//     email: this.emailAddress
+//   });
+
+//   if (error) {
+//     console.log('Something is wrong:', error);
+//   } else {
+//     console.log('Success!', token);
+//     // ...send the token to the your backend to process the charge
+//   }
+
+// }
 
 
 }

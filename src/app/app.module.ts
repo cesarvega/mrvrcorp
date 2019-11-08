@@ -21,6 +21,11 @@ import { DynamicProfileModule } from './main/dynamic-profile/dynamic-profile.mod
 import { ToastrModule } from 'ngx-toastr';
 import { APP_BASE_HREF } from '@angular/common';
 import { MrvrModule } from './main/mrvr/mrvr.module';
+import { environment } from 'environments/environment';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 // import { SampleModule } from './main/sample/sample.module';
 // import { NameRulesComponent } from './main/name-rules/name-rules.component';
 
@@ -30,7 +35,7 @@ const appRoutes: Routes = [
         redirectTo: 'home'
     }
 ];
-
+const config = environment.firebaseConfig;
 @NgModule({
     declarations: [
         AppComponent,
@@ -59,6 +64,12 @@ const appRoutes: Routes = [
         FuseThemeOptionsModule,
         DynamicProfileModule,
 
+        //firebase 
+        AngularFireModule.initializeApp(config),
+        AngularFirestoreModule, // firestore
+        AngularFireAuthModule, // auth
+        AngularFireStorageModule, // storage
+
         // App modules
         LayoutModule,
         MrvrModule
@@ -67,7 +78,7 @@ const appRoutes: Routes = [
         AppComponent
     ],
     providers: [
-        { provide: APP_BASE_HREF, useValue: '/tabacco/' },
+        { provide: APP_BASE_HREF, useValue: '/tab/' },
     ]
 })
 export class AppModule
