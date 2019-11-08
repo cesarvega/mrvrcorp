@@ -23,10 +23,10 @@ export class StripeComponent implements OnInit {
   emailAddress: any;
 
 
-  //stripe stuff
+  // stripe stuff
   handler: any;
   userId: any;
-  amount = 500;
+  amount = 3500;
 
 
   constructor(
@@ -129,15 +129,15 @@ ngOnInit(): void {
 
 handlePayment() {
   this.handler.open({
-    name: 'FireStarter',
+    name: 'AwesomeGateway',
     excerpt: 'Deposit Funds to Account',
     amount: this.amount
   });
 }
 
 @HostListener('window:popstate')
-  onPopstate() {
-    this.handler.close()
+  onPopstate(): void {
+    this.handler.close();
   }
 
 //   async onSubmit(): Promise<void> {
