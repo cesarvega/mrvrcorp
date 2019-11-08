@@ -127,7 +127,7 @@ ngOnInit(): void {
   });
 }
 
-handlePayment() {
+handlePayment(): void {
   this.handler.open({
     name: 'AwesomeGateway',
     excerpt: 'Deposit Funds to Account',
