@@ -27,8 +27,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
-// import { SampleModule } from './main/sample/sample.module';
-// import { NameRulesComponent } from './main/name-rules/name-rules.component';
+import { AuthService } from './main/core/auth.service';
 
 const appRoutes: Routes = [
     {
@@ -39,8 +38,7 @@ const appRoutes: Routes = [
 const config = environment.firebaseConfig;
 @NgModule({
     declarations: [
-        AppComponent,
-        // NameRulesComponent
+        AppComponent
     ],
     imports     : [
         BrowserModule,
@@ -65,7 +63,7 @@ const config = environment.firebaseConfig;
         FuseThemeOptionsModule,
         DynamicProfileModule,
 
-        //firebase 
+        // firebase 
         AngularFireModule.initializeApp(config),
         AngularFirestoreModule, // firestore
         AngularFireAuthModule, // auth
@@ -80,7 +78,7 @@ const config = environment.firebaseConfig;
     bootstrap   : [
         AppComponent
     ],
-    providers: [
+    providers: [AuthService,
         { provide: APP_BASE_HREF, useValue: '/tab/' },
     ]
 })
