@@ -14,6 +14,7 @@ import { MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatInputModule,
 import { ProdutDetailComponent } from './products/produt-detail/produt-detail.component';
 import { UserLoginComponent } from '../user/user-login/user-login.component';
 import { UserProfileComponent } from '../user/user-profile/user-profile.component';
+import { AuthGuard } from '../core/auth.guard';
 const routes: Routes = [
   {
     path: 'home',
@@ -53,7 +54,8 @@ const routes: Routes = [
   },
   {
     path: 'stripe',
-    component: StripeComponent
+    component: StripeComponent,
+    canActivate: [AuthGuard]
   }
 ];
 
