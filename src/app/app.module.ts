@@ -29,9 +29,10 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AuthService } from './main/core/auth.service';
 
+import {ApolloBoostModule, ApolloBoost} from 'apollo-angular-boost';
 const appRoutes: Routes = [
     {
-        path      : '**',
+        path: '**',
         redirectTo: 'home'
     }
 ];
@@ -40,10 +41,11 @@ const config = environment.firebaseConfig;
     declarations: [
         AppComponent
     ],
-    imports     : [
+    imports: [
         BrowserModule,
         BrowserAnimationsModule,
         HttpClientModule,
+        ApolloBoostModule,
         RouterModule.forRoot(appRoutes),
         ToastrModule.forRoot(),
         TranslateModule.forRoot(),
@@ -69,19 +71,61 @@ const config = environment.firebaseConfig;
         AngularFireAuthModule, // auth
         AngularFireStorageModule, // storage
         AngularFireDatabaseModule,
-        
+
 
         // App modules
         LayoutModule,
         MrvrModule
     ],
-    bootstrap   : [
+    bootstrap: [
         AppComponent
     ],
     providers: [AuthService,
-        { provide: APP_BASE_HREF, useValue: '/tab/' },
+        { provide: APP_BASE_HREF, useValue: '/tab2/' },
     ]
 })
-export class AppModule
-{
+export class AppModule {
+    constructor(apollo: ApolloBoost) {
+        apollo.create({
+          uri: 'https://5vxky4z9pl.sse.codesandbox.io/graphql',
+          httpOptions: {
+            withCredentials: true
+          },
+          request: async (operation) => {
+            // const token = await AsyncStorage.getItem('token');
+            // operation.setContext({
+            //   headers: {
+            //     authorization: token
+            //   }
+            // });
+          },
+          onError: ({ graphQLErrors, networkError }) => {
+            if (graphQLErrors) {
+            //   sendToLoggingService(graphQLErrors);
+            }
+            if (networkError) {
+            //   logoutUser();
+            }
+          },
+          clientState: {
+            defaults: {
+              isConnected: true
+            },
+            resolvers: {
+              Mutation: {
+                updateNetworkStatus: (_, { isConnected }, { cache }) => {
+                  cache.writeData({ data: { isConnected }});
+                  return null;
+                }
+              }
+            }
+          },
+          cacheRedirects: {
+            Query: {
+              movie: (_, { id }, { getCacheKey }) =>
+                getCacheKey({ __typename: 'Movie', id })
+            }
+          }
+        })
+      }
 }

@@ -5,7 +5,10 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { environment } from 'environments/environment';
 import { PaymentService } from './payment.service';
 import * as firebase from 'firebase';
+// import { FbService } from './fb-service.service';
 
+import {Apollo, gql} from 'apollo-angular-boost';
+ 
 
 
 @Component({
@@ -33,7 +36,9 @@ export class StripeComponent implements OnInit {
     private _fuseConfigService: FuseConfigService,
     private _mrvrservice: MrvrService,
     public fb: FormBuilder,
-    private paymentSvc: PaymentService
+    private paymentSvc: PaymentService,
+    // private fbService: FbService,
+    apollo: Apollo
   ) {
     // Configure the layout
     this._fuseConfigService.config = {
@@ -65,11 +70,73 @@ export class StripeComponent implements OnInit {
       TypeOfInquiry: {},
       SurveyName: {},
     };
+
+
+    // Apollo
+
+    // const allPosts = apollo.watchQuery({
+    //   query: gql`
+    //     query allPosts {
+    //       posts {
+    //         id
+    //         title
+    //         text
+    //       }
+    //     }
+    //   `,
+    // });
+    const query = gql`
+    query getBooks {
+      books @rtdbQuery(ref: "/books", type: "Books") @array {
+        id @key
+        name
+        reviews @array {
+          id @key
+          content
+        }
+      }
+    }
+  `;
+    
+
+
+
+
   
   }
 
 
 ngOnInit(): void {
+
+
+   
+//   const rtdbLink = createRtdbLink({
+//     database: firebase.database()
+//   });
+   
+//   const client = new ApolloClient({
+//     link: rtdbLink,
+//     cache: new InMemoryCache(),
+//   });
+
+
+//   // A simple query to retrieve data from 
+// // firebase.database().ref("/profile/me")
+// // @rtdbQuery stands for Realtime Database Query
+// const query = gql`
+// query myProfile {
+//   me @rtdbQuery(ref: "/profile/me") {
+//     name
+//   }
+// }
+// `;
+
+// // Invoke the query and log the person's name
+// client.query({ query }).then(response => {
+// console.log(response.data.name);
+// });
+
+
   this.stripeForm = this.fb.group({
     senderName: ['cesar', [Validators.required, Validators.minLength(4)]],
     emailFrom: ['cvega@gmail.com', [Validators.required, Validators.email]],
