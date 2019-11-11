@@ -1,13 +1,46 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, HostListener, NgZone } from '@angular/core';
 import { FuseConfigService } from '@fuse/services/config.service';
 import { MrvrService } from '../mrvr.service';
 import { fuseAnimations } from '@fuse/animations';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { trigger, state, style, transition, animate, group } from '@angular/animations';
+import { count } from 'rxjs/operators';
 
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
-  styleUrls: ['./homepage.component.scss']
+  styleUrls: ['./homepage.component.scss'],
+  animations: [
+    // trigger('openClose', [
+    //   // ...
+    //   state('open', style({
+    //     height: '200px',
+    //     opacity: 1,
+    //     backgroundColor: 'yellow'
+    //   })),
+    //   state('closed', style({
+    //     height: '100px',
+    //     opacity: 0.5,
+    //     backgroundColor: 'green'
+    //   })),
+    //   transition('* => closed', [
+    //     animate('1s')
+    //   ]),
+    //   transition('* => open', [
+    //     animate('0.5s')
+    //   ]),
+    // ]),
+    trigger('flyInOut', [
+      state('in', style({ transform: 'translateX(0)' })),
+      transition('void => *', [
+        style({ transform: 'translateX(-100%)' }),
+        animate(100)
+      ]),
+      transition('* => void', [
+        animate(100, style({ transform: 'translateX(100%)' }))
+      ])
+    ])
+  ],
 })
 export class HomepageComponent implements OnInit {
 
@@ -18,6 +51,11 @@ export class HomepageComponent implements OnInit {
   card: any;
   error: string;
   emailAddress: any;
+  selectedImage: any;
+  sticky: boolean = false;
+  mainImage = ['assets/images/slide0.jpg',
+   'assets/images/slide1.jpg', 'assets/images/slide2.jpg', 'assets/images/slide3.jpg'];
+
   constructor(
     private _fuseConfigService: FuseConfigService,
     private _mrvrservice: MrvrService,
@@ -56,7 +94,13 @@ export class HomepageComponent implements OnInit {
 
   }
 
+  hideSuccessMessage = false;
 
+  FadeOutSuccessMsg() {
+    setTimeout( () => {
+           this.hideSuccessMessage = true;
+        }, 10000);
+   }
   ngOnInit(): void {
     this.stripeForm = this.fb.group({
       senderName: ['cesar', [Validators.required, Validators.minLength(4)]],
@@ -70,6 +114,18 @@ export class HomepageComponent implements OnInit {
       TypeOfInquiry: ['', Validators.required],
       SurveyName: [''],
     });
+
+     this.selectedImage = this.mainImage[0];
+     let counter = 0
+     setInterval(() => {
+       if (counter === 4) {
+         counter = 0;
+       }
+       this.selectedImage = this.mainImage[counter];
+       counter++;
+      }, 5000);
+
+      // this.FadeOutSuccessMsg();
   }
 
   async onSubmit(): Promise<void> {

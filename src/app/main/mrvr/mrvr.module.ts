@@ -15,6 +15,8 @@ import { ProdutDetailComponent } from './products/produt-detail/produt-detail.co
 import { UserLoginComponent } from '../user/user-login/user-login.component';
 import { UserProfileComponent } from '../user/user-profile/user-profile.component';
 import { AuthGuard } from '../core/auth.guard';
+
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 const routes: Routes = [
   {
     path: 'home',
@@ -76,6 +78,7 @@ const routes: Routes = [
   imports: [
     CommonModule, 
     RouterModule.forChild(routes),
+    MDBBootstrapModule.forRoot(),
     FlexLayoutModule,
     FormsModule,
     ReactiveFormsModule,
@@ -91,6 +94,7 @@ const routes: Routes = [
     MatDatepickerModule,
     MatMenuModule,
     MatRippleModule,
+    
 
   ],
   providers: [
