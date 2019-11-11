@@ -46,7 +46,7 @@ export class HomepageComponent implements OnInit {
   topOverlay: any;
   bottomOverlay: any;
   sticky = false;
-  booleanFromComponentClass = true;
+  booleanFromComponentClass = false;
   mainImage = [
     { image: 'assets/images/slide0.jpg', top: 'A Wide RangE Of ', bottom: 'Excellent Tabaccos' },
     { image: 'assets/images/slide1.jpg', top: 'One stop source for', bottom: 'premium cigars' },
@@ -98,11 +98,6 @@ export class HomepageComponent implements OnInit {
 
   hideSuccessMessage = false;
 
-  FadeOutSuccessMsg() {
-    setTimeout(() => {
-      this.hideSuccessMessage = true;
-    }, 10000);
-  }
   ngOnInit(): void {
     this.stripeForm = this.fb.group({
       senderName: ['cesar', [Validators.required, Validators.minLength(4)]],
@@ -118,27 +113,29 @@ export class HomepageComponent implements OnInit {
     });
 
     this.selectedImage = this.mainImage[0].image;
-    this.topOverlay = this.mainImage[0].top;
-    this.bottomOverlay = this.mainImage[0].bottom;
+    this.topOverlay = this.mainImage[3].top;
+    this.bottomOverlay = this.mainImage[3].bottom;
+    
     let counter = 0;
     setInterval(() => {
-      this.booleanFromComponentClass = !this.booleanFromComponentClass;
       if (counter === 8) {
         counter = 0;
       }
-      this.selectedImage = this.mainImage[counter].image;
+       
       setTimeout(() => {
-        this.topOverlay = this.mainImage[counter].top;
-        setTimeout(() => {
-          this.bottomOverlay = this.mainImage[counter].bottom;
-          counter++;
-        }, 300);
-      }, 500);
+        // setTimeout(() => {
+        // },200);
+        this.booleanFromComponentClass = !this.booleanFromComponentClass;
+        counter++;
+      }, 200);
+     
       this.booleanFromComponentClass = !this.booleanFromComponentClass;
-
-    }, 2000);
-
-    // this.FadeOutSuccessMsg();
+      this.selectedImage = this.mainImage[counter].image;
+      this.topOverlay = this.mainImage[counter].top;
+      this.bottomOverlay = this.mainImage[counter].bottom;
+      // this.booleanFromComponentClass = !this.booleanFromComponentClass;
+     
+    }, 5000);
   }
 
   async onSubmit(): Promise<void> {
