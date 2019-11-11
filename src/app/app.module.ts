@@ -81,7 +81,7 @@ const config = environment.firebaseConfig;
         AppComponent
     ],
     providers: [AuthService,
-        { provide: APP_BASE_HREF, useValue: '/tab2/' },
+        { provide: APP_BASE_HREF, useValue: '/tabacco/' },
     ]
 })
 export class AppModule {

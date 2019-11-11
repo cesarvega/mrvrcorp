@@ -2,7 +2,7 @@
 @import url(//fonts.googleapis.com/css?family=Yesteryear);
 @font-face {
   font-family: lato;
-  src: url(assets/fonts/PressStyle.otf) format("opentype");
+  src: url(assets/fonts/attention.otf) format("opentype");
 }
 
 :host {
@@ -49,12 +49,11 @@
     right: 16px;
   }
 
-  /* Centered text */
+
   .centered {
     position: absolute;
-    top: 90%;
+    top: 35%;
     left: 50%;
-    bottom: 8px;
     transform: translate(-50%, -50%);
   }
 }
@@ -64,7 +63,7 @@
   // top: 100px;
   // padding: 0px;
   margin-top: 130px;
-  background: url("/assets/images/backgrounds/dark-material-bg.jpg") no-repeat;
+  background: url("assets/images/backgrounds/dark-material-bg.jpg") no-repeat;
   // background-color: whitesmoke;
   background-size: cover;
   @include mat-elevation(16);
@@ -72,10 +71,12 @@
     font-family: "lato", "arial", sans-serif;
     font-size: 20px;
   }
+ 
   .font-yestarday-featured {
     font-family: "Yesteryear", "arial", sans-serif;
     font-size: 50px;
   }
+
   .menu {
     z-index: 99999;
     background-color: black;
@@ -83,7 +84,31 @@
     position: fixed;
     top: 0;
     width: 100%;
+    
+    .mat-button:hover {
+      background-color:goldenrod;
+    }
   }
+   
+  .top-overlay {
+    font-family: "lato", "arial", sans-serif;
+    font-size: 100px;
+    
+  }
+
+  .bottom-overlay {
+    font-family: "Yesteryear", "arial", sans-serif;
+    font-size: 140px;    
+    padding-top: 220px;
+  }
+  .show{
+    opacity: 1 !important;
+    }
+    .step{
+    opacity: 0;
+    transition: .5s ease-in-out all;
+    }
+
   .featured-text {
     margin-bottom: 40px;
     color: white;

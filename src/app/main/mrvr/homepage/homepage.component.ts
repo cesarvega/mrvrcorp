@@ -5,40 +5,28 @@ import { fuseAnimations } from '@fuse/animations';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { trigger, state, style, transition, animate, group } from '@angular/animations';
 import { count } from 'rxjs/operators';
+import { Router } from '@angular/router';
+import { log } from 'util';
 
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
   styleUrls: ['./homepage.component.scss'],
   animations: [
-    // trigger('openClose', [
-    //   // ...
-    //   state('open', style({
-    //     height: '200px',
-    //     opacity: 1,
-    //     backgroundColor: 'yellow'
-    //   })),
-    //   state('closed', style({
-    //     height: '100px',
-    //     opacity: 0.5,
-    //     backgroundColor: 'green'
-    //   })),
-    //   transition('* => closed', [
-    //     animate('1s')
-    //   ]),
-    //   transition('* => open', [
-    //     animate('0.5s')
-    //   ]),
-    // ]),
-    trigger('flyInOut', [
-      state('in', style({ transform: 'translateX(0)' })),
-      transition('void => *', [
-        style({ transform: 'translateX(-100%)' }),
-        animate(100)
+    trigger('simpleFadeAnimation', [
+
+      // the "in" style determines the "resting" state of the element when it is visible.
+      state('in', style({ opacity: 1 })),
+
+      // fade in when created. this could also be written as transition('void => *')
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate(1000)
       ]),
-      transition('* => void', [
-        animate(100, style({ transform: 'translateX(100%)' }))
-      ])
+
+      // fade out when destroyed. this could also be written as transition('void => *')
+      transition(':leave',
+        animate(1000, style({ opacity: 0 })))
     ])
   ],
 })
@@ -55,14 +43,25 @@ export class HomepageComponent implements OnInit {
   error: string;
   emailAddress: any;
   selectedImage: any;
+  topOverlay: any;
+  bottomOverlay: any;
   sticky = false;
-  mainImage = ['assets/images/slide0.jpg',
-    'assets/images/slide1.jpg', 'assets/images/slide2.jpg', 'assets/images/slide3.jpg'];
+  booleanFromComponentClass = true;
+  mainImage = [
+    { image: 'assets/images/slide0.jpg', top: 'A Wide RangE Of ', bottom: 'Excellent Tabaccos' },
+    { image: 'assets/images/slide1.jpg', top: 'One stop source for', bottom: 'premium cigars' },
+    { image: 'assets/images/slide2.jpg', top: 'the best store', bottom: 'to go for cigars' },
+    { image: 'assets/images/slide3.jpg', top: 'Cigars you', bottom: 'Will Love' },
+    { image: 'assets/images/slide5.jpg', top: 'A source of', bottom: 'Great Cigars' },
+    { image: 'assets/images/slide6.jpg', top: 'Shop', bottom: 'Truly great cigars' },
+    { image: 'assets/images/slide7.jpg', top: 'A Wide Range', bottom: 'of Premium Cigars' },
+    { image: 'assets/images/slide8.jpg', top: 'The Cigars', bottom: 'Wiht Most Flavor' }];
 
   constructor(
     private _fuseConfigService: FuseConfigService,
     private _mrvrservice: MrvrService,
-    public fb: FormBuilder
+    public fb: FormBuilder,
+    private router: Router
   ) {
     // Configure the layout
     this._fuseConfigService.config = {
@@ -118,15 +117,26 @@ export class HomepageComponent implements OnInit {
       SurveyName: [''],
     });
 
-    this.selectedImage = this.mainImage[0];
+    this.selectedImage = this.mainImage[0].image;
+    this.topOverlay = this.mainImage[0].top;
+    this.bottomOverlay = this.mainImage[0].bottom;
     let counter = 0;
     setInterval(() => {
-      if (counter === 4) {
+      this.booleanFromComponentClass = !this.booleanFromComponentClass;
+      if (counter === 8) {
         counter = 0;
       }
-      this.selectedImage = this.mainImage[counter];
-      counter++;
-    }, 5000);
+      this.selectedImage = this.mainImage[counter].image;
+      setTimeout(() => {
+        this.topOverlay = this.mainImage[counter].top;
+        setTimeout(() => {
+          this.bottomOverlay = this.mainImage[counter].bottom;
+          counter++;
+        }, 300);
+      }, 500);
+      this.booleanFromComponentClass = !this.booleanFromComponentClass;
+
+    }, 2000);
 
     // this.FadeOutSuccessMsg();
   }
@@ -143,5 +153,11 @@ export class HomepageComponent implements OnInit {
       console.log('Success!', token);
       // ...send the token to the your backend to process the charge
     }
+  }
+
+  navigateMenu(event): void {
+    this.router.navigate(['/products']);
+    console.log(event);
+
   }
 }

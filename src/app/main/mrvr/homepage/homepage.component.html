@@ -1,36 +1,38 @@
 <div id="home" [@flyInOut]="'open'" fxLayout="column" fxLayoutGap="20px">
 
     <!-- MENU -->
-    <div fxFlex class="menu" fxLayout="column"
-        fxLayoutAlign="center center" fxLayoutAlign.gt-sm="start center" fxLayout.gt-sm="row">
+    <div fxFlex class="menu" fxLayout="column" fxLayoutAlign="center center" fxLayoutAlign.gt-sm="start center"
+        fxLayout.gt-sm="row">
         <div fxFlex="20">
 
         </div>
 
         <div fxFlex="20">
-            <img src="/assets/images/Cigars.png">
+            <img src="assets/images/Cigars.png">
         </div>
         <div fxFlex="50" fxLayoutGap="10px" fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="center center"
             fxLayoutAlign.gt-sm="center  space-around">
-            <button mat-button class=" font-yestarday ">Home</button>
-            <button mat-button class=" font-yestarday ">About</button>
-            <button mat-button class=" font-yestarday ">Brands</button>
-            <button mat-button class=" font-yestarday ">Products</button>
-            <button mat-button class=" font-yestarday ">My Account</button>
-            <button mat-button class=" font-yestarday ">Contact</button>
+            <button mat-button (click)="navigateMenu($event)" class="font-yestarday">Home</button>
+            <button mat-button (click)="navigateMenu($event)" class="font-yestarday ">Brands</button>
+            <button mat-button (click)="navigateMenu($event)" class="font-yestarday ">Products</button>
+            <button mat-button (click)="navigateMenu($event)" class="font-yestarday ">My Account</button>
+            <button mat-button (click)="navigateMenu($event)" class="font-yestarday ">About</button>
+            <button mat-button (click)="navigateMenu($event)" class="font-yestarday ">Contact</button>
         </div>
     </div>
 
     <!-- CAROUSEL -->
-    <div style="background-image: 'assets/images/backgrounds/absoluteMain.jpg';" fxLayout="row">
+    <div fxLayout="row">
         <div fxLayout="row" fxLayoutAlign="center center">
             <div fxFlex="2">
                 <button mat-icon-button aria-label="left">
                     <mat-icon class="s-40">arrow_left</mat-icon>
                 </button>
             </div>
-            <div   fxFlex="96" class="logomain">
-                <img  *ngIf="!hideSuccessMessage"[src]="selectedImage">s
+            <div fxFlex="96" class="logomain container ">
+                <img [class.show]="!booleanFromComponentClass"  [@simpleFadeAnimation]="'in'" [src]="selectedImage" class="step">
+                <div [class.show]="!booleanFromComponentClass"  class="step centered top-overlay mat-display-3 w3-animate-top">{{topOverlay}}</div>
+                <div [class.show]="!booleanFromComponentClass"  class="step centered bottom-overlay mat-display-3 w3-animate-top">{{bottomOverlay}}</div>
             </div>
             <div fxFlex="2">
                 <button mat-icon-button aria-label="left">
@@ -47,38 +49,38 @@
     <div style="background-color: black;width: 100%;" fxLayout="column" fxLayout.gt-sm="row"
         fxLayoutAlign.gt-sm="center center" fxLayoutGap="50px">
         <div class="logotop" fxLayout="column" fxLayoutAlign.gt-sm="center center">
-            <img class="featureImage" src="/assets/images/banner1.jpg">
+            <img class="featureImage" src="assets/images/banner1.jpg">
             <button mat-button class=" font-yestarday-featured ">Cigars</button>
         </div>
         <div class="logotop" fxLayout="column" fxLayoutAlign.gt-sm="center center">
-            <img class="featureImage" src="/assets/images/banner2.jpg">
+            <img class="featureImage" src="assets/images/banner2.jpg">
             <button mat-button class=" font-yestarday-featured ">Humidors</button>
         </div>
         <div class="logotop" fxLayout="column" fxLayoutAlign.gt-sm="center center">
-            <img class="featureImage" src="/assets/images/banner3.jpg">
+            <img class="featureImage" src="assets/images/banner3.jpg">
             <button mat-button class=" font-yestarday-featured ">Accessories</button>
         </div>
     </div>
 
-    
-    <span class="featured-text mat-display-2" >FEATURED PRODUCTS</span>
-   
 
-    <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center center" fxLayoutGap="10px"  fxLayoutAlign="center center"
-        *ngFor="let product of featuredProducts">
+    <span class="featured-text mat-display-2">FEATURED PRODUCTS</span>
+
+
+    <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center center" fxLayoutGap="10px"
+        fxLayoutAlign="center center" *ngFor="let product of featuredProducts">
 
         <div class="fuse-card" fxFlex>
             <div class="position-relative">
                 <img src="assets/images/cards/card3.jpg">
                 <div class="position-absolute font-size-20 fuse-white-fg p-16 align-left align-bottom">
-                    Top 10 Holiday Locations
+                    Acid Blue
                 </div>
             </div>
             <div class="p-16">
-                <div class="h4 secondary-text">Number 10</div>
+                <div class="h4 secondary-text">Nicaragua</div>
             </div>
             <div class="p-16 pt-0 line-height-1.75">
-                Cards are a convenient means of displaying content composed of different elements.
+                The Acid Blue Cigar line holds within it the cigars most widely desired by Acid aficionados.
             </div>
             <div class="p-8 pt-0" fxLayout="row" fxLayoutAlign="end center">
                 <button mat-button color="accent">BUY NOW</button>
@@ -130,7 +132,7 @@
         fxLayoutAlign.gt-sm="center center">
         <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center center">
             <div>
-                <img width="170" src="/assets/images/Cigars.png">
+                <img width="170" src="assets/images/Cigars.png">
             </div>
         </div>
     </div>
