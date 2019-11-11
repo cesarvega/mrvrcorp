@@ -46,15 +46,18 @@ export class HomepageComponent implements OnInit {
 
   reasons = ['Survey Technical Questions/Comments', 'Payment Questions',
     'Website Questions/Comments', 'Profile/Registration Questions Comments', 'Change Username'];
+
+  featuredProducts = ['Survey Technical Questions/Comments', 'Payment Questions',
+    'Website Questions/Comments'];
   stripeForm: FormGroup;
   formErrors: any;
   card: any;
   error: string;
   emailAddress: any;
   selectedImage: any;
-  sticky: boolean = false;
+  sticky = false;
   mainImage = ['assets/images/slide0.jpg',
-   'assets/images/slide1.jpg', 'assets/images/slide2.jpg', 'assets/images/slide3.jpg'];
+    'assets/images/slide1.jpg', 'assets/images/slide2.jpg', 'assets/images/slide3.jpg'];
 
   constructor(
     private _fuseConfigService: FuseConfigService,
@@ -97,10 +100,10 @@ export class HomepageComponent implements OnInit {
   hideSuccessMessage = false;
 
   FadeOutSuccessMsg() {
-    setTimeout( () => {
-           this.hideSuccessMessage = true;
-        }, 10000);
-   }
+    setTimeout(() => {
+      this.hideSuccessMessage = true;
+    }, 10000);
+  }
   ngOnInit(): void {
     this.stripeForm = this.fb.group({
       senderName: ['cesar', [Validators.required, Validators.minLength(4)]],
@@ -115,17 +118,17 @@ export class HomepageComponent implements OnInit {
       SurveyName: [''],
     });
 
-     this.selectedImage = this.mainImage[0];
-     let counter = 0
-     setInterval(() => {
-       if (counter === 4) {
-         counter = 0;
-       }
-       this.selectedImage = this.mainImage[counter];
-       counter++;
-      }, 5000);
+    this.selectedImage = this.mainImage[0];
+    let counter = 0;
+    setInterval(() => {
+      if (counter === 4) {
+        counter = 0;
+      }
+      this.selectedImage = this.mainImage[counter];
+      counter++;
+    }, 5000);
 
-      // this.FadeOutSuccessMsg();
+    // this.FadeOutSuccessMsg();
   }
 
   async onSubmit(): Promise<void> {

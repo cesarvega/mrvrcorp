@@ -1,4 +1,4 @@
-<div id="home" [@flyInOut]="'open'" fxLayout="column" fxLayoutGap="100px">
+<div id="home" [@flyInOut]="'open'" fxLayout="column" fxLayoutGap="20px">
 
     <!-- MENU -->
     <div fxFlex class="menu" fxLayout="column"
@@ -10,7 +10,7 @@
         <div fxFlex="20">
             <img src="/assets/images/Cigars.png">
         </div>
-        <div fxFlex="50" fxLayoutGap="20px" fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="center center"
+        <div fxFlex="50" fxLayoutGap="10px" fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="center center"
             fxLayoutAlign.gt-sm="center  space-around">
             <button mat-button class=" font-yestarday ">Home</button>
             <button mat-button class=" font-yestarday ">About</button>
@@ -60,77 +60,67 @@
         </div>
     </div>
 
-    <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center center" fxLayoutGap="10px"
-        *ngFor="let product of products">
+    
+    <span class="featured-text mat-display-2" >FEATURED PRODUCTS</span>
+   
+
+    <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center center" fxLayoutGap="10px"  fxLayoutAlign="center center"
+        *ngFor="let product of featuredProducts">
 
         <div class="fuse-card" fxFlex>
-
             <div class="position-relative">
                 <img src="assets/images/cards/card3.jpg">
                 <div class="position-absolute font-size-20 fuse-white-fg p-16 align-left align-bottom">
                     Top 10 Holiday Locations
                 </div>
             </div>
-
             <div class="p-16">
                 <div class="h4 secondary-text">Number 10</div>
             </div>
-
             <div class="p-16 pt-0 line-height-1.75">
                 Cards are a convenient means of displaying content composed of different elements.
             </div>
-
-            <div class="p-8 pt-0" fxLayout="row" fxLayoutAlign="start center">
-                <button mat-button color="accent">SHARE</button>
+            <div class="p-8 pt-0" fxLayout="row" fxLayoutAlign="end center">
+                <button mat-button color="accent">BUY NOW</button>
                 <button mat-button color="accent">EXPLORE</button>
             </div>
 
         </div>
         <div class="fuse-card" fxFlex>
-
             <div class="position-relative">
                 <img src="assets/images/cards/card3.jpg">
                 <div class="position-absolute font-size-20 fuse-white-fg p-16 align-left align-bottom">
                     Top 10 Holiday Locations
                 </div>
             </div>
-
             <div class="p-16">
                 <div class="h4 secondary-text">Number 10</div>
             </div>
-
             <div class="p-16 pt-0 line-height-1.75">
                 Cards are a convenient means of displaying content composed of different elements.
             </div>
-
-            <div class="p-8 pt-0" fxLayout="row" fxLayoutAlign="start center">
-                <button mat-button color="accent">SHARE</button>
+            <div class="p-8 pt-0" fxLayout="row" fxLayoutAlign="end center">
+                <button mat-button color="accent">BUY NOW</button>
                 <button mat-button color="accent">EXPLORE</button>
             </div>
-
         </div>
         <div class="fuse-card" fxFlex>
-
             <div class="position-relative">
                 <img src="assets/images/cards/card3.jpg">
                 <div class="position-absolute font-size-20 fuse-white-fg p-16 align-left align-bottom">
                     Top 10 Holiday Locations
                 </div>
             </div>
-
             <div class="p-16">
                 <div class="h4 secondary-text">Number 10</div>
             </div>
-
             <div class="p-16 pt-0 line-height-1.75">
                 Cards are a convenient means of displaying content composed of different elements.
             </div>
-
-            <div class="p-8 pt-0" fxLayout="row" fxLayoutAlign="start center">
-                <button mat-button color="accent">SHARE</button>
+            <div class="p-8 pt-0" fxLayout="row" fxLayoutAlign="end center">
+                <button mat-button color="accent">BUY NOW</button>
                 <button mat-button color="accent">EXPLORE</button>
             </div>
-
         </div>
     </div>
 
@@ -138,15 +128,10 @@
 
     <div style="background-color: black;width: 100%;" fxLayout="column" fxLayout.gt-sm="row"
         fxLayoutAlign.gt-sm="center center">
-
         <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center center">
             <div>
                 <img width="170" src="/assets/images/Cigars.png">
             </div>
-
         </div>
-
     </div>
-
-
 </div>
