@@ -1,15 +1,15 @@
-<div id="home" fxLayout="column"  fxLayoutAlign.gt-sm="center center" fxLayoutAlign="center center">
+<div id="home" fxLayout="column" fxLayoutAlign.gt-sm="center center" fxLayoutAlign="center center">
     <!-- MENU -->
-    <div fxFlex class="menu" fxLayout="column" fxLayoutAlign="center center" fxLayoutAlign.gt-sm="start center"
+    <div [@pageAnimations]="'enter'" fxFlex class="menu" fxLayout="column" fxLayoutAlign="center center" fxLayoutAlign.gt-sm="start center"
         fxLayout.gt-sm="row">
         <div fxFlex="20">
 
         </div>
 
-        <div fxFlex="20">
-            <img src="assets/images/Cigars.png">
+        <div   [@Fade1]="animationSTate"  fxFlex="20">
+            <img  style="padding:20px;" src="assets/images/Cigars.png">
         </div>
-        <div fxFlex="50" fxLayoutGap="10px" fxLayout="column" fxLayout.gt-xs="row" fxLayout.gt-sm="row"
+        <div class="mymenu"  [@Fade1]="animationSTate"  fxFlex="50" fxLayoutGap="10px" fxLayout="column" fxLayout.gt-xs="row" fxLayout.gt-sm="row"
             fxLayoutAlign="center center" fxLayoutAlign.gt-sm="center  space-around">
             <button mat-button (click)="navigateMenu($event)" class="font-yestarday">Home</button>
             <button mat-button (click)="navigateMenu($event)" class="font-yestarday ">Brands</button>
@@ -20,8 +20,8 @@
         </div>
     </div>
     <!-- CAROUSEL -->
-    <div  (click)="nextSlide()" class="carousel" fxLayout="row" fxLayoutAlign="center center">
-        <div [@Fade]="'open'" fxFlex="100" class="logomain container ">
+    <div (click)="nextSlide()" class="carousel" fxLayout="row" fxLayoutAlign="center center">
+        <div [@Fade]="animationSTate" fxFlex="100" class="logomain container ">
             <img [class.show]="!showText" [src]="selectedImage" class="step">
             <div [class.show]="!showText" style="color:blanchedalmond" class="step centered top-overlay mat-display-3">
                 {{topOverlay}}</div>
@@ -31,98 +31,96 @@
     </div>
 
 </div>
-<div  fxFlex class="mainContent" fxLayout="column"   
-fxLayoutAlign.gt-sm="center center" fxLayoutAlign="center center">
-        <!-- CATEGORIES -->
-        <div class="categories" fxLayout="column" fxLayout.gt-sm="row"
-            fxLayoutAlign.gt-sm="center center" fxLayoutGap="50px" fxLayoutAlign="center center">
-            <div class="logotop" fxLayout="column" fxLayoutAlign.gt-sm="center center">
-                <img class="featureImage" src="assets/images/banner1.jpg">
-                <button mat-button class=" font-yestarday-featured ">Cigars</button>
-            </div>
-            <div class="logotop" fxLayout="column" fxLayoutAlign.gt-sm="center center">
-                <img class="featureImage" src="assets/images/banner2.jpg">
-                <button mat-button class=" font-yestarday-featured ">Humidors</button>
-            </div>
-            <div class="logotop" fxLayout="column" fxLayoutAlign.gt-sm="center center">
-                <img class="featureImage" src="assets/images/banner3.jpg">
-                <button mat-button class=" font-yestarday-featured ">Accessories</button>
-            </div>
+<div fxFlex class="mainContent" fxLayout="column" fxLayoutAlign.gt-sm="center center" fxLayoutAlign="center center">
+    <!-- CATEGORIES -->
+    <div class="categories" fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center center"
+        fxLayoutGap="50px" fxLayoutAlign="center center">
+        <div class="logotop" fxLayout="column" fxLayoutAlign.gt-sm="center center">
+            <img class="featureImage" src="assets/images/banner1.jpg">
+            <button mat-button class=" font-yestarday-featured ">Cigars</button>
         </div>
-
-
-        <div class="featured" fxLayout="column" fxLayout.gt-sm="column"
-            fxLayoutAlign.gt-sm="center center" fxLayoutAlign="center center">
-            <div class="bottom-featured">Feature Products</div>
-            <!-- <div class="underline">----------------</div> -->
+        <div class="logotop" fxLayout="column" fxLayoutAlign.gt-sm="center center">
+            <img class="featureImage" src="assets/images/banner2.jpg">
+            <button mat-button class=" font-yestarday-featured ">Humidors</button>
         </div>
-        
-        
-     
-        <!-- PRODUCST -->
-        <div class="products" fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center center" fxLayoutGap="10px"
-            fxLayoutAlign="center center" *ngFor="let product of featuredProducts">
-            <div class="fuse-card" fxFlex>
-                <div class="position-relative">
-                    <img src="assets/images/cards/card3.jpg">
-                    <div class="position-absolute font-size-20 fuse-white-fg p-16 align-left align-bottom">
-                        Acid Blue
-                    </div>
-                </div>
-                <div class="p-16">
-                    <div class="h4 secondary-text">Nicaragua</div>
-                </div>
-                <div class="p-16 pt-0 line-height-1.75">
-                    The Acid Blue Cigar line holds within it the cigars most widely desired by Acid aficionados.
-                </div>
-                <div class="p-8 pt-0" fxLayout="row" fxLayoutAlign="end center">
-                    <button mat-button color="accent">BUY NOW</button>
-                    <button mat-button color="accent">EXPLORE</button>
-                </div>
-            </div>
-            <div class="fuse-card" fxFlex>
-                <div class="position-relative">
-                    <img src="assets/images/cards/card3.jpg">
-                    <div class="position-absolute font-size-20 fuse-white-fg p-16 align-left align-bottom">
-                        Top 10 Holiday Locations
-                    </div>
-                </div>
-                <div class="p-16">
-                    <div class="h4 secondary-text">Number 10</div>
-                </div>
-                <div class="p-16 pt-0 line-height-1.75">
-                    Cards are a convenient means of displaying content composed of different elements.
-                </div>
-                <div class="p-8 pt-0" fxLayout="row" fxLayoutAlign="end center">
-                    <button mat-button color="accent">BUY NOW</button>
-                    <button mat-button color="accent">EXPLORE</button>
-                </div>
-            </div>
-            <div class="fuse-card" fxFlex>
-                <div class="position-relative">
-                    <img src="assets/images/cards/card3.jpg">
-                    <div class="position-absolute font-size-20 fuse-white-fg p-16 align-left align-bottom">
-                        Top 10 Holiday Locations
-                    </div>
-                </div>
-                <div class="p-16">
-                    <div class="h4 secondary-text">Number 10</div>
-                </div>
-                <div class="p-16 pt-0 line-height-1.75">
-                    Cards are a convenient means of displaying content composed of different elements.
-                </div>
-                <div class="p-8 pt-0" fxLayout="row" fxLayoutAlign="end center">
-                    <button mat-button color="accent">BUY NOW</button>
-                    <button mat-button color="accent">EXPLORE</button>
-                </div>
-            </div>
+        <div class="logotop" fxLayout="column" fxLayoutAlign.gt-sm="center center">
+            <img class="featureImage" src="assets/images/banner3.jpg">
+            <button mat-button class=" font-yestarday-featured ">Accessories</button>
         </div>
-    
-        <!-- FOOTER -->
-        
-        <div class="products" fxLayout="column" fxLayout.gt-sm="column"
-            fxLayoutAlign.gt-sm="center center" fxLayoutAlign="center center">
-            <img width="170" src="assets/images/Cigars.png">          
-        </div>
-       
     </div>
+
+
+    <div class="featured" fxLayout="column" fxLayout.gt-sm="column" fxLayoutAlign.gt-sm="center center"
+        fxLayoutAlign="center center">
+        <div class="bottom-featured">Feature Products</div>
+    </div>
+
+
+
+    <!-- PRODUCST -->
+    <div class="products" fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center center" fxLayoutGap="20px"
+        fxLayoutAlign="center center" *ngFor="let product of featuredProducts">
+        <div class="fuse-card" fxFlex>
+            <div class="position-relative">
+                <img src="assets/images/cards/card3.jpg">
+                <div class="title position-absolute font-size-20 align-left align-bottom">
+                    Acid Blue
+                </div>
+            </div>
+            <div class="p-16">
+                <div class="h3 red-A400 secondary-text">Nic`aragua</div>
+            </div>
+            <div class="p-16 pt-0 line-height-1.75">
+                The Acid Blue Cigar line holds within it the cigars most widely desired by Acid aficionados.
+            </div>
+            <div class="p-8 pt-0" fxLayout="row" fxLayoutAlign="end center">
+                <button mat-button >BUY NOW</button>
+                <button mat-button >EXPLORE</button>
+            </div>
+        </div>       
+        <div class="fuse-card" fxFlex>
+            <div class="position-relative">
+                <img src="assets/images/cards/card3.jpg">
+                <div class="title position-absolute font-size-20 align-left align-bottom">
+                    Acid Blue
+                </div>
+            </div>
+            <div class="p-16">
+                <div class="h4 secondary-text">Nicaragua</div>
+            </div>
+            <div class="p-16 pt-0 line-height-1.75">
+                The Acid Blue Cigar line holds within it the cigars most widely desired by Acid aficionados.
+            </div>
+            <div class="p-8 pt-0" fxLayout="row" fxLayoutAlign="end center">
+                <button mat-button >BUY NOW</button>
+                <button mat-button >EXPLORE</button>
+            </div>
+        </div>       
+        <div class="fuse-card" fxFlex>
+            <div class="position-relative">
+                <img src="assets/images/cards/card3.jpg">
+                <div class="title position-absolute font-size-20 align-left align-bottom">
+                    Acid Blue
+                </div>
+            </div>
+            <div class="p-16">
+                <div class="h4 secondary-text">Nicaragua</div>
+            </div>
+            <div class="p-16 pt-0 line-height-1.75">
+                The Acid Blue Cigar line holds within it the cigars most widely desired by Acid aficionados.
+            </div>
+            <div class="p-8 pt-0" fxLayout="row" fxLayoutAlign="end center">
+                <button mat-button >BUY NOW</button>
+                <button mat-button >EXPLORE</button>
+            </div>
+        </div>       
+    </div>
+
+    <!-- FOOTER -->
+
+    <div class="products" fxLayout="column" fxLayout.gt-sm="column" fxLayoutAlign.gt-sm="center center"
+        fxLayoutAlign="center center">
+        <img width="170" src="assets/images/Cigars.png">
+    </div>
+
+</div>

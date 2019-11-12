@@ -6,40 +6,7 @@
 }
 
 :host {
-.fuse-card {
-  background: rgba(255, 32, 32, 0.5);
-  width: 100%;
-  padding-top: 50px;
-  color: wheat;
-}
-
- @include media-breakpoint("xs") {
-    margin-top: 410px;
-    font-size: 10px !important;
-    .logotop {
-      font-size: 10px !important;
-    }
-    .menu {
-      z-index: 1;
-      background-color: black;
-      color: white;
-      position: absolute;
-      // top: 0;
-      width: 100%;
-    }
  
-    .carousel {
-      z-index: -99999;
-      background-color: black;
-      color: white;
-      position: absolute;
-      width: 100%;
-
-      .mat-button:hover {
-        background-color: goldenrod;
-      }
-    }
-  }
   .sticky {
     position: fixed;
     top: 0;
@@ -94,14 +61,14 @@
 .categories {
   background: rgba(3, 3, 3, 0.9);
   width: 100%;
-  padding-top: 50px;
+  padding: 50px;
   color: wheat;
 }
 
 .featured {
   background: rgba(218, 5, 5, 0.9);
   width: 100%;
-  padding-top: 50px;  
+  padding: 50px;
   color: black;
 }
 
@@ -110,6 +77,18 @@
   width: 100%;
   padding-top: 50px;
   color: wheat;
+  .fuse-card {
+    background: rgba(241, 4, 4, 0.8);
+    width: 100%;
+    color:  rgba(255, 255, 255, 1);
+    font-family: "monospace", Courier, monospace;
+    .title {
+      font-family: "lato", "arial", sans-serif;
+      font-size: 30px;
+      color: black;
+      background: rgba(255, 255, 255, 0.5);
+    }
+  }
 }
 
 .font-yestarday-featured {
@@ -125,15 +104,22 @@
 }
 
 .mainContent {
-  margin-top: 09px;
-  z-index: 2;
+  margin-top: 380px;
+  z-index: 999;
+  padding-left: 10px;
+  @include media-breakpoint("gt-xs") {
+    margin-top: 500px;
+    z-index: 999;
+  }
   @include media-breakpoint("gt-sm") {
+    margin-top: 500px;
+    z-index: 999;
+  }
+  @include media-breakpoint("gt-md") {
     margin-top: 860px;
-    z-index: 2;
+    z-index: 999;
   }
 }
-
-
 
 #home {
   background: url("assets/images/backgrounds/dark-material-bg.jpg") no-repeat;
@@ -170,8 +156,6 @@
       background-color: goldenrod;
     }
   }
-
- 
 
   .top-overlay {
     font-family: "lato", "arial", sans-serif;

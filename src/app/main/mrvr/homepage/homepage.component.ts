@@ -3,7 +3,7 @@ import { FuseConfigService } from '@fuse/services/config.service';
 import { MrvrService } from '../mrvr.service';
 import { fuseAnimations } from '@fuse/animations';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
-import { trigger, state, style, transition, animate, group } from '@angular/animations';
+import { trigger, state, style, transition, animate, group, query, stagger } from '@angular/animations';
 import { Router } from '@angular/router';
 
 
@@ -12,21 +12,32 @@ import { Router } from '@angular/router';
   templateUrl: './homepage.component.html',
   styleUrls: ['./homepage.component.scss'],
   animations: [
-    trigger('Fade', [
+    trigger('Fade1', [
 
       // the "in" style determines the "resting" state of the element when it is visible.
-      state('in', style({ opacity: 1 
-       })),
-
+      state('in', style({
+        width: 10,
+        transform: 'translateX(-100px)',
+         opacity: 1
+      })),
       // fade in when created. this could also be written as transition('void => *')
       transition(':enter', [
-        style({ opacity: 0 }),
-        animate(3000)
+        style({
+          width: 120,
+          transform: 'translateX(100px)',
+           opacity: 0
+        }),
+        
+        animate('3s cubic-bezier(0.35, 0, 0.25, 1)')
       ]),
 
       // fade out when destroyed. this could also be written as transition('void => *')
       transition(':leave',
-        animate(3000, style({ opacity: 0 })))
+        animate('3s cubic-bezier(0.35, 0, 0.25, 1)', style({
+          width: 10,
+          transform: 'translateX(-100px)',
+          opacity: 0
+        })))
     ])
   ],
 })
@@ -48,6 +59,7 @@ export class HomepageComponent implements OnInit {
   sticky = false;
   showText = false;
   globalCounter = 0;
+  animationSTate = 'in';
   mainImage = [
     { image: 'assets/images/slide0.jpg', top: 'Absolute Of Excellent', bottom: ' Tabaccos' },
     { image: 'assets/images/slide1.jpg', top: 'One stop source for', bottom: 'Premium Cigars' },
@@ -116,26 +128,26 @@ export class HomepageComponent implements OnInit {
     this.selectedImage = this.mainImage[0].image;
     this.topOverlay = this.mainImage[3].top;
     this.bottomOverlay = this.mainImage[3].bottom;
-    
+
     let counter = 0;
     setInterval(() => {
       if (counter === 8) {
         counter = 0;
       }
-       
+
       setTimeout(() => {
         // setTimeout(() => {
         // },200);
         this.showText = !this.showText;
         counter++;
       }, 200);
-     
+
       this.showText = !this.showText;
       this.selectedImage = this.mainImage[counter].image;
       this.topOverlay = this.mainImage[counter].top;
       this.bottomOverlay = this.mainImage[counter].bottom;
       // this.showText = !this.showText;
-     
+
     }, 5000);
   }
 
@@ -157,9 +169,9 @@ export class HomepageComponent implements OnInit {
     if (this.globalCounter === 8) {
       this.globalCounter = 0
     }
-    this.selectedImage = this.mainImage[ this.globalCounter].image;
-    this.topOverlay = this.mainImage[ this.globalCounter].top;
-    this.bottomOverlay = this.mainImage[ this.globalCounter].bottom;
+    this.selectedImage = this.mainImage[this.globalCounter].image;
+    this.topOverlay = this.mainImage[this.globalCounter].top;
+    this.bottomOverlay = this.mainImage[this.globalCounter].bottom;
     this.globalCounter++;
   }
 
