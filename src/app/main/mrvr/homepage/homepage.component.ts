@@ -68,7 +68,9 @@ export class HomepageComponent implements OnInit {
     { image: 'assets/images/slide5.jpg', top: 'Absolute source of', bottom: 'Great Cigars' },
     { image: 'assets/images/slide6.jpg', top: 'Shop', bottom: 'Great Cigars' },
     { image: 'assets/images/slide7.jpg', top: 'A Wide Range of ', bottom: 'Premium Cigars' },
+    { image: 'assets/images/slide11.jpg', top: 'You Will Love', bottom: 'Our Cigars' },
     { image: 'assets/images/slide8.jpg', top: 'The Cigars Wiht', bottom: ' Most Flavor' }];
+  isGlowing = true;
 
   constructor(
     private _fuseConfigService: FuseConfigService,
@@ -130,14 +132,16 @@ export class HomepageComponent implements OnInit {
     this.bottomOverlay = this.mainImage[3].bottom;
 
     let counter = 0;
+    setTimeout(() => {
+    this.isGlowing = false;
+    }, 2000);
     setInterval(() => {
-      if (counter === 8) {
+      if (counter === 9) {
         counter = 0;
       }
 
       setTimeout(() => {
-        // setTimeout(() => {
-        // },200);
+      
         this.showText = !this.showText;
         counter++;
       }, 200);
@@ -146,7 +150,7 @@ export class HomepageComponent implements OnInit {
       this.selectedImage = this.mainImage[counter].image;
       this.topOverlay = this.mainImage[counter].top;
       this.bottomOverlay = this.mainImage[counter].bottom;
-      // this.showText = !this.showText;
+      
 
     }, 5000);
   }
@@ -166,7 +170,7 @@ export class HomepageComponent implements OnInit {
   }
 
   nextSlide(): void {
-    if (this.globalCounter === 8) {
+    if (this.globalCounter === 9) {
       this.globalCounter = 0
     }
     this.selectedImage = this.mainImage[this.globalCounter].image;

@@ -1,6 +1,6 @@
 <div id="home" fxLayout="column" fxLayoutAlign.gt-sm="center center" fxLayoutAlign="center center">
     <!-- MENU -->
-    <div [@pageAnimations]="'enter'" fxFlex class="menu" fxLayout="column" fxLayoutAlign="center center" fxLayoutAlign.gt-sm="start center"
+    <div  fxFlex class="menu" fxLayout="column" fxLayoutAlign="center center" fxLayoutAlign.gt-sm="start center"
         fxLayout.gt-sm="row">
         <div fxFlex="20">
 
@@ -21,11 +21,11 @@
     </div>
     <!-- CAROUSEL -->
     <div (click)="nextSlide()" class="carousel" fxLayout="row" fxLayoutAlign="center center">
-        <div [@Fade]="animationSTate" fxFlex="100" class="logomain container ">
+        <div  fxFlex="100" class="logomain container ">
             <img [class.show]="!showText" [src]="selectedImage" class="step">
-            <div [class.show]="!showText" style="color:blanchedalmond" class="step centered top-overlay mat-display-3">
+            <div [class.show]="!showText"  [ngClass]="{'glow': isGlowing}" style="color:blanchedalmond" class=" step centered top-overlay mat-display-3">
                 {{topOverlay}}</div>
-            <div [class.show]="!showText" style="color:crimson" class=" step centered bottom-overlay mat-display-3">
+            <div [class.show]="!showText" [ngClass]="{'glow': isGlowing}" style="color:crimson" class=" step centered bottom-overlay mat-display-3">
                 {{bottomOverlay}}</div>
         </div>
     </div>
@@ -35,15 +35,15 @@
     <!-- CATEGORIES -->
     <div class="categories" fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center center"
         fxLayoutGap="50px" fxLayoutAlign="center center">
-        <div class="logotop" fxLayout="column" fxLayoutAlign.gt-sm="center center">
+        <div  [@Fade1]="animationSTate"  class="logotop" fxLayout="column" fxLayoutAlign.gt-sm="center center">
             <img class="featureImage" src="assets/images/banner1.jpg">
             <button mat-button class=" font-yestarday-featured ">Cigars</button>
         </div>
-        <div class="logotop" fxLayout="column" fxLayoutAlign.gt-sm="center center">
+        <div  [@Fade1]="animationSTate"  class="logotop" fxLayout="column" fxLayoutAlign.gt-sm="center center">
             <img class="featureImage" src="assets/images/banner2.jpg">
             <button mat-button class=" font-yestarday-featured ">Humidors</button>
         </div>
-        <div class="logotop" fxLayout="column" fxLayoutAlign.gt-sm="center center">
+        <div  [@Fade1]="animationSTate"  class="logotop" fxLayout="column" fxLayoutAlign.gt-sm="center center">
             <img class="featureImage" src="assets/images/banner3.jpg">
             <button mat-button class=" font-yestarday-featured ">Accessories</button>
         </div>
@@ -74,8 +74,26 @@
                 The Acid Blue Cigar line holds within it the cigars most widely desired by Acid aficionados.
             </div>
             <div class="p-8 pt-0" fxLayout="row" fxLayoutAlign="end center">
-                <button mat-button >BUY NOW</button>
                 <button mat-button >EXPLORE</button>
+                <button mat-button >BUY NOW</button>
+            </div>
+        </div>       
+        <div class="fuse-card" fxFlex>
+            <div class="position-relative">
+                <img src="assets/images/cards/card3.jpg">
+                <div class="title position-absolute font-size-20 align-left align-bottom">
+                    Acid Blue
+                </div>
+            </div>
+            <div class="p-16">
+                    <strong><div class="h4 secondary-text">Nicaragua</div></strong>
+            </div>
+            <div class="p-16 pt-0 line-height-1.75">
+                The Acid Blue Cigar line holds within it the cigars most widely desired by Acid aficionados.
+            </div>
+            <div class="p-8 pt-0" fxLayout="row" fxLayoutAlign="end center">
+                <button mat-button >EXPLORE</button>
+                <button mat-button >BUY NOW</button>
             </div>
         </div>       
         <div class="fuse-card" fxFlex>
@@ -92,26 +110,8 @@
                 The Acid Blue Cigar line holds within it the cigars most widely desired by Acid aficionados.
             </div>
             <div class="p-8 pt-0" fxLayout="row" fxLayoutAlign="end center">
-                <button mat-button >BUY NOW</button>
                 <button mat-button >EXPLORE</button>
-            </div>
-        </div>       
-        <div class="fuse-card" fxFlex>
-            <div class="position-relative">
-                <img src="assets/images/cards/card3.jpg">
-                <div class="title position-absolute font-size-20 align-left align-bottom">
-                    Acid Blue
-                </div>
-            </div>
-            <div class="p-16">
-                <div class="h4 secondary-text">Nicaragua</div>
-            </div>
-            <div class="p-16 pt-0 line-height-1.75">
-                The Acid Blue Cigar line holds within it the cigars most widely desired by Acid aficionados.
-            </div>
-            <div class="p-8 pt-0" fxLayout="row" fxLayoutAlign="end center">
                 <button mat-button >BUY NOW</button>
-                <button mat-button >EXPLORE</button>
             </div>
         </div>       
     </div>
@@ -120,7 +120,7 @@
 
     <div class="products" fxLayout="column" fxLayout.gt-sm="column" fxLayoutAlign.gt-sm="center center"
         fxLayoutAlign="center center">
-        <img width="170" src="assets/images/Cigars.png">
+        <img style="margin: 30px;" width="170" src="assets/images/Cigars.png">
     </div>
 
 </div>
