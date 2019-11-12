@@ -30,6 +30,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AuthService } from './main/core/auth.service';
 
 import {ApolloBoostModule, ApolloBoost} from 'apollo-angular-boost';
+import { BrandsComponent } from './mani/mrvr/brands/brands.component';
 const appRoutes: Routes = [
     {
         path: '**',
@@ -39,7 +40,8 @@ const appRoutes: Routes = [
 const config = environment.firebaseConfig;
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        BrandsComponent
     ],
     imports: [
         BrowserModule,

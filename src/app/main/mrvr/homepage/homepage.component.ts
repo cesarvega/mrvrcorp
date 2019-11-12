@@ -41,6 +41,7 @@ import { Router } from '@angular/router';
     ])
   ],
 })
+
 export class HomepageComponent implements OnInit {
 
   reasons = ['Survey Technical Questions/Comments', 'Payment Questions',
@@ -71,6 +72,7 @@ export class HomepageComponent implements OnInit {
     { image: 'assets/images/slide11.jpg', top: 'You Will Love', bottom: 'Our Cigars' },
     { image: 'assets/images/slide8.jpg', top: 'The Cigars Wiht', bottom: ' Most Flavor' }];
   isGlowing = true;
+  
 
   constructor(
     private _fuseConfigService: FuseConfigService,
@@ -171,7 +173,7 @@ export class HomepageComponent implements OnInit {
 
   nextSlide(): void {
     if (this.globalCounter === 9) {
-      this.globalCounter = 0
+      this.globalCounter = 0;
     }
     this.selectedImage = this.mainImage[this.globalCounter].image;
     this.topOverlay = this.mainImage[this.globalCounter].top;

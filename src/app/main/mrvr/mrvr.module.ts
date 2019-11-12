@@ -7,16 +7,19 @@ import { ProductsComponent } from './products/products.component';
 import { VendorsComponent } from './vendors/vendors.component';
 import { UsersComponent } from './users/users.component';
 import { StripeComponent } from './stripe/stripe.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ClientsComponent } from './clients/clients.component';
 import { HomepageComponent } from './homepage/homepage.component';
-import { MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatInputModule, MatExpansionModule, MatIconModule, MatOptionModule, MatSelectModule, ErrorStateMatcher, ShowOnDirtyErrorStateMatcher, MatDialogModule, MatDatepickerModule, MatMenuModule, MatRippleModule, MatDividerModule  } from '@angular/material';
+import { MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatInputModule, MatExpansionModule, MatIconModule, MatOptionModule, MatSelectModule, ErrorStateMatcher, ShowOnDirtyErrorStateMatcher, MatDialogModule, MatDatepickerModule, MatMenuModule, MatRippleModule, MatDividerModule, MatGridListModule, MatPaginatorModule, MatTableModule } from '@angular/material';
 import { ProdutDetailComponent } from './products/produt-detail/produt-detail.component';
 import { UserLoginComponent } from '../user/user-login/user-login.component';
 import { UserProfileComponent } from '../user/user-profile/user-profile.component';
 import { AuthGuard } from '../core/auth.guard';
 
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { BrandsComponent } from './brands/brands.component';
+import { DashModule } from './dash/dash.module';
+import { DashProductsComponent } from './dash/dash-products/dash-products.component';
 const routes: Routes = [
   {
     path: 'home',
@@ -33,10 +36,6 @@ const routes: Routes = [
   {
     path: 'product-detail',
     component: ProdutDetailComponent
-  },
-  {
-    path: 'dash',
-    component: MrvrComponent
   },
   {
     path: 'users',
@@ -73,10 +72,10 @@ const routes: Routes = [
     ProdutDetailComponent,
     UserLoginComponent,
     UserProfileComponent,
-    // NameRulesComponent
-  ], 
+    BrandsComponent
+  ],
   imports: [
-    CommonModule, 
+    CommonModule,
     RouterModule.forChild(routes),
     MDBBootstrapModule.forRoot(),
     FlexLayoutModule,
@@ -94,12 +93,18 @@ const routes: Routes = [
     MatDatepickerModule,
     MatMenuModule,
     MatRippleModule,
-    MatDividerModule
-    
+    MatDividerModule,
+    MatGridListModule,
+    MatTableModule,
+    MatPaginatorModule,
+    DashModule
+
+
+
 
   ],
   providers: [
-    {provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher}
+    { provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher }
   ]
 })
 export class MrvrModule { }

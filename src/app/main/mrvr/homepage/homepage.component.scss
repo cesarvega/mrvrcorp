@@ -6,6 +6,8 @@
 }
 
 :host {
+
+
   .glow {
     // font-size: 80px;
     color: #fff;
@@ -80,6 +82,7 @@
   width: 100%;
   padding: 50px;
   color: wheat;
+  padding-left: 130px;
 }
 
 .featured {
@@ -106,6 +109,11 @@
       background: rgba(255, 255, 255, 0.5);
     }
   }
+}
+
+
+.menuFont {
+  font-family: "lato", "arial", sans-serif;
 }
 
 .font-yestarday-featured {
