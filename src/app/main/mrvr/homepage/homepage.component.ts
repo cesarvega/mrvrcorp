@@ -4,29 +4,29 @@ import { MrvrService } from '../mrvr.service';
 import { fuseAnimations } from '@fuse/animations';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { trigger, state, style, transition, animate, group } from '@angular/animations';
-import { count } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { log } from 'util';
+
 
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
   styleUrls: ['./homepage.component.scss'],
   animations: [
-    trigger('simpleFadeAnimation', [
+    trigger('Fade', [
 
       // the "in" style determines the "resting" state of the element when it is visible.
-      state('in', style({ opacity: 1 })),
+      state('in', style({ opacity: 1 
+       })),
 
       // fade in when created. this could also be written as transition('void => *')
       transition(':enter', [
         style({ opacity: 0 }),
-        animate(1000)
+        animate(3000)
       ]),
 
       // fade out when destroyed. this could also be written as transition('void => *')
       transition(':leave',
-        animate(1000, style({ opacity: 0 })))
+        animate(3000, style({ opacity: 0 })))
     ])
   ],
 })
@@ -46,16 +46,17 @@ export class HomepageComponent implements OnInit {
   topOverlay: any;
   bottomOverlay: any;
   sticky = false;
-  booleanFromComponentClass = false;
+  showText = false;
+  globalCounter = 0;
   mainImage = [
-    { image: 'assets/images/slide0.jpg', top: 'A Wide RangE Of ', bottom: 'Excellent Tabaccos' },
-    { image: 'assets/images/slide1.jpg', top: 'One stop source for', bottom: 'premium cigars' },
-    { image: 'assets/images/slide2.jpg', top: 'the best store', bottom: 'to go for cigars' },
+    { image: 'assets/images/slide0.jpg', top: 'Absolute Of Excellent', bottom: ' Tabaccos' },
+    { image: 'assets/images/slide1.jpg', top: 'One stop source for', bottom: 'Premium Cigars' },
+    { image: 'assets/images/slide2.jpg', top: 'Absolute the best store to', bottom: 'Go for Cigars' },
     { image: 'assets/images/slide3.jpg', top: 'Cigars you', bottom: 'Will Love' },
-    { image: 'assets/images/slide5.jpg', top: 'A source of', bottom: 'Great Cigars' },
-    { image: 'assets/images/slide6.jpg', top: 'Shop', bottom: 'Truly great cigars' },
-    { image: 'assets/images/slide7.jpg', top: 'A Wide Range', bottom: 'of Premium Cigars' },
-    { image: 'assets/images/slide8.jpg', top: 'The Cigars', bottom: 'Wiht Most Flavor' }];
+    { image: 'assets/images/slide5.jpg', top: 'Absolute source of', bottom: 'Great Cigars' },
+    { image: 'assets/images/slide6.jpg', top: 'Shop', bottom: 'Great Cigars' },
+    { image: 'assets/images/slide7.jpg', top: 'A Wide Range of ', bottom: 'Premium Cigars' },
+    { image: 'assets/images/slide8.jpg', top: 'The Cigars Wiht', bottom: ' Most Flavor' }];
 
   constructor(
     private _fuseConfigService: FuseConfigService,
@@ -125,15 +126,15 @@ export class HomepageComponent implements OnInit {
       setTimeout(() => {
         // setTimeout(() => {
         // },200);
-        this.booleanFromComponentClass = !this.booleanFromComponentClass;
+        this.showText = !this.showText;
         counter++;
       }, 200);
      
-      this.booleanFromComponentClass = !this.booleanFromComponentClass;
+      this.showText = !this.showText;
       this.selectedImage = this.mainImage[counter].image;
       this.topOverlay = this.mainImage[counter].top;
       this.bottomOverlay = this.mainImage[counter].bottom;
-      // this.booleanFromComponentClass = !this.booleanFromComponentClass;
+      // this.showText = !this.showText;
      
     }, 5000);
   }
@@ -150,6 +151,16 @@ export class HomepageComponent implements OnInit {
       console.log('Success!', token);
       // ...send the token to the your backend to process the charge
     }
+  }
+
+  nextSlide(): void {
+    if (this.globalCounter === 8) {
+      this.globalCounter = 0
+    }
+    this.selectedImage = this.mainImage[ this.globalCounter].image;
+    this.topOverlay = this.mainImage[ this.globalCounter].top;
+    this.bottomOverlay = this.mainImage[ this.globalCounter].bottom;
+    this.globalCounter++;
   }
 
   navigateMenu(event): void {

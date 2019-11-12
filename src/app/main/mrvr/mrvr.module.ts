@@ -10,7 +10,7 @@ import { StripeComponent } from './stripe/stripe.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ClientsComponent } from './clients/clients.component';
 import { HomepageComponent } from './homepage/homepage.component';
-import { MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatInputModule, MatExpansionModule, MatIconModule, MatOptionModule, MatSelectModule, ErrorStateMatcher, ShowOnDirtyErrorStateMatcher, MatDialogModule, MatDatepickerModule, MatMenuModule, MatRippleModule  } from '@angular/material';
+import { MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatInputModule, MatExpansionModule, MatIconModule, MatOptionModule, MatSelectModule, ErrorStateMatcher, ShowOnDirtyErrorStateMatcher, MatDialogModule, MatDatepickerModule, MatMenuModule, MatRippleModule, MatDividerModule  } from '@angular/material';
 import { ProdutDetailComponent } from './products/produt-detail/produt-detail.component';
 import { UserLoginComponent } from '../user/user-login/user-login.component';
 import { UserProfileComponent } from '../user/user-profile/user-profile.component';
@@ -94,6 +94,7 @@ const routes: Routes = [
     MatDatepickerModule,
     MatMenuModule,
     MatRippleModule,
+    MatDividerModule
     
 
   ],
