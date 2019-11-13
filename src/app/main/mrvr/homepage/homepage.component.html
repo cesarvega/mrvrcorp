@@ -1,11 +1,15 @@
+
+
 <div id="home" fxLayout="column" fxLayoutAlign.gt-sm="center center" fxLayoutAlign="center center">
     <!-- MENU -->
-    <div fxFlex class="menu" fxLayout="column" fxLayoutAlign="center center" fxLayoutAlign.gt-sm="start center"
+    <app-header></app-header>
+    
+    <!-- <div fxFlex class="menu" fxLayout="column" fxLayoutAlign="center center" fxLayoutAlign.gt-sm="start center"
         fxLayout.gt-sm="row">
         <div fxFlex="20">
 
         </div>
-
+       
         <div [@Fade1]="animationSTate" fxFlex="20">
             <img style="padding:20px;" src="assets/images/Cigars.png">
         </div>
@@ -19,7 +23,7 @@
             <button mat-button (click)="navigateMenu($event)" class="font-yestarday ">About</button>
             <button mat-button (click)="navigateMenu($event)" class="font-yestarday ">Contact</button>
         </div>
-    </div>
+    </div> -->
     <!-- CAROUSEL -->
     <div (click)="nextSlide()" class="carousel" fxLayout="row" fxLayoutAlign="center center">
         <div fxFlex="100" class="logomain container ">

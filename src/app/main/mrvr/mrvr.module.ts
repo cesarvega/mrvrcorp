@@ -20,6 +20,8 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { BrandsComponent } from './brands/brands.component';
 import { DashModule } from './dash/dash.module';
 import { DashProductsComponent } from './dash/dash-products/dash-products.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 const routes: Routes = [
   {
     path: 'home',
@@ -72,7 +74,9 @@ const routes: Routes = [
     ProdutDetailComponent,
     UserLoginComponent,
     UserProfileComponent,
-    BrandsComponent
+    BrandsComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule,
