@@ -1,24 +1,4 @@
-<div id="home" fxLayout="column" fxLayoutAlign.gt-sm="center center" fxLayoutAlign="center center">
-    <!-- MENU -->
-    <div fxFlex class="menu" fxLayout="column" fxLayoutAlign="center center" fxLayoutAlign.gt-sm="start center"
-        fxLayout.gt-sm="row">
-        <div fxFlex="20">
-        </div>
-        <div [@Fade1]="animationSTate" fxFlex="20">
-            <img style="padding:20px;" src="assets/images/Cigars.png">
-        </div>
-        <div class="menuFont" [@Fade1]="animationSTate" fxFlex="50" fxLayoutGap="10px" fxLayout="column"
-            fxLayout.gt-xs="row" fxLayout.gt-sm="row" fxLayoutAlign="center center"
-            fxLayoutAlign.gt-sm="center  space-around">
-            <button mat-button (click)="navigateMenu('home')" class="font-yestarday">Home</button>
-            <button mat-button (click)="navigateMenu($event)" class="font-yestarday ">Brands</button>
-            <button mat-button (click)="navigateMenu('Products')" class="active font-yestarday ">Products</button>
-            <button mat-button (click)="navigateMenu($event)" class="font-yestarday ">My Account</button>
-            <button mat-button (click)="navigateMenu($event)" class="font-yestarday ">About</button>
-            <button mat-button (click)="navigateMenu($event)" class="font-yestarday ">Contact</button>
-        </div>
-    </div>
-</div>
+<app-header></app-header>
 
 <!-- CATEGORIES -->
 

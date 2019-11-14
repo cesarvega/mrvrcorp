@@ -1,142 +1,114 @@
+<div class="page-layout blank p-24" fxFlex fxLayout="column" fxLayoutAlign="center center" fusePerfectScrollbar>
+   <div>
+      <app-header></app-header>
+   </div>
+   <div fxFlex class="content">
+      <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="50px" fxFlex>
+
+         <div fxLayout="row" fxLayoutAlign.gt-sm="center center" fxLayoutGap="50px" fxFlex>
+            <div class="logotop" fxLayout="column" fxLayoutAlign.gt-sm="center center">
+               <img class="featureImage" src="assets/images/banner1.jpg">
+               <button mat-button class=" font-yestarday-featured ">Cigars</button>
+            </div>
+            <div class="logotop" fxLayout="column" fxLayoutAlign.gt-sm="center center">
+               <img class="featureImage" src="assets/images/banner2.jpg">
+               <button mat-button class=" font-yestarday-featured ">Humidors</button>
+            </div>
+            <div class="logotop" fxLayout="column" fxLayoutAlign.gt-sm="center center">
+               <img class="featureImage" src="assets/images/banner3.jpg">
+               <button mat-button class=" font-yestarday-featured ">Accessories</button>
+            </div>
+         </div>
+
+         <div class="featured" fxLayout="column" fxLayout.gt-sm="column" fxLayoutAlign.gt-sm="center center"
+            fxLayoutAlign="center center" fxFlex>
+            <div fxFlex class="bottom-featured">Feature Products</div>
+         </div>
+
+         <div fxLayout="row" fxLayout="row wrap" >
+            <div *ngFor="let product of featuredProducts" fxFlex="33" fxLayoutAlign="center center" >               
+                  <div class="fuse-card">
+                     <div class="position-relative">
+                        <img src="assets/images/cards/card3.jpg">
+                        <div class="title position-absolute font-size-20 align-left align-bottom">
+                           Acid Blue
+                        </div>
+                     </div>
+                     <div class="p-16">
+                        <div class="h3 red-A400 secondary-text">Nic`aragua</div>
+                     </div>
+                     <div class="p-16 pt-0 line-height-1.75">
+                        The Acid Blue Cigar line holds within it the cigars most widely desired by Acid aficionados.
+                     </div>
+                     <div class="p-8 pt-0" fxLayout="row" fxLayoutAlign="end center">
+                        <button mat-button>EXPLORE</button>
+                        <button mat-button>BUY NOW</button>
+                     </div>
+                  </div>
+               
+            </div>
+         </div>
+
+         <div class="products" fxLayout="column" fxLayout.gt-sm="column" fxLayoutAlign.gt-sm="center center" fxFlex
+            fxLayoutAlign="center center">
+            <img style="margin: 30px;" width="170" src="assets/images/Cigars.png">
+         </div>
 
 
-<div id="home" fxLayout="column" fxLayoutAlign.gt-sm="center center" fxLayoutAlign="center center">
-    <!-- MENU -->
-    <app-header></app-header>
-    
-    <!-- <div fxFlex class="menu" fxLayout="column" fxLayoutAlign="center center" fxLayoutAlign.gt-sm="start center"
-        fxLayout.gt-sm="row">
-        <div fxFlex="20">
-
-        </div>
-       
-        <div [@Fade1]="animationSTate" fxFlex="20">
-            <img style="padding:20px;" src="assets/images/Cigars.png">
-        </div>
-        <div class="menuFont" [@Fade1]="animationSTate" fxFlex="50" fxLayoutGap="10px" fxLayout="column"
-            fxLayout.gt-xs="row" fxLayout.gt-sm="row" fxLayoutAlign="center center"
-            fxLayoutAlign.gt-sm="center  space-around">
-            <button mat-button (click)="navigateMenu('home')" class="font-yestarday">Home</button>
-            <button mat-button (click)="navigateMenu($event)" class="font-yestarday ">Brands</button>
-            <button mat-button (click)="navigateMenu('Products')" class="active font-yestarday ">Products</button>
-            <button mat-button (click)="navigateMenu($event)" class="font-yestarday ">My Account</button>
-            <button mat-button (click)="navigateMenu($event)" class="font-yestarday ">About</button>
-            <button mat-button (click)="navigateMenu($event)" class="font-yestarday ">Contact</button>
-        </div>
-    </div> -->
-    <!-- CAROUSEL -->
-    <div (click)="nextSlide()" class="carousel" fxLayout="row" fxLayoutAlign="center center">
-        <div fxFlex="100" class="logomain container ">
-            <img [class.show]="!showText" [src]="selectedImage" class="step">
-            <div [class.show]="!showText" [ngClass]="{'glow': isGlowing}" style="color:blanchedalmond"
-                class=" step centered top-overlay mat-display-3">
-                {{topOverlay}}</div>
-            <div [class.show]="!showText" [ngClass]="{'glow': isGlowing}" style="color:crimson"
-                class=" step centered bottom-overlay mat-display-3">
-                {{bottomOverlay}}</div>
-        </div>
-    </div>
-
+      </div>
+   </div>
 </div>
+<!-- <div fxFlex class="menu" fxLayout="column" fxLayoutAlign="center center" fxLayoutAlign.gt-sm="start center"
+   fxLayout.gt-sm="row">
+   <div fxFlex="20">
 
-    <!-- CATEGORIES -->
+   </div>
 
-<div fxFlex class="mainContent" fxLayout="column" fxLayoutAlign.gt-sm="center center" fxLayoutAlign="center center">
-    <div class="categories" fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center center"
-        fxLayoutGap="50px" fxLayoutAlign="center center">
-        <div class="logotop" fxLayout="column" fxLayoutAlign.gt-sm="center center">
-            <img class="featureImage" src="assets/images/banner1.jpg">
-            <button mat-button class=" font-yestarday-featured ">Cigars</button>
-        </div>
-        <div class="logotop" fxLayout="column" fxLayoutAlign.gt-sm="center center">
-            <img class="featureImage" src="assets/images/banner2.jpg">
-            <button mat-button class=" font-yestarday-featured ">Humidors</button>
-        </div>
-        <div class="logotop" fxLayout="column" fxLayoutAlign.gt-sm="center center">
-            <img class="featureImage" src="assets/images/banner3.jpg">
-            <button mat-button class=" font-yestarday-featured ">Accessories</button>
-        </div>
-    </div>
+   <div [@Fade1]="animationSTate" fxFlex="20">
+      <img style="padding:20px;" src="assets/images/Cigars.png">
+   </div>
+   <div class="menuFont" [@Fade1]="animationSTate" fxFlex="50" fxLayoutGap="10px" fxLayout="column" fxLayout.gt-xs="row"
+      fxLayout.gt-sm="row" fxLayoutAlign="center center" fxLayoutAlign.gt-sm="center  space-around">
+      <button mat-button (click)="navigateMenu('home')" class="font-yestarday">Home</button>
+      <button mat-button (click)="navigateMenu($event)" class="font-yestarday ">Brands</button>
+      <button mat-button (click)="navigateMenu('Products')" class="active font-yestarday ">Products</button>
+      <button mat-button (click)="navigateMenu($event)" class="font-yestarday ">My Account</button>
+      <button mat-button (click)="navigateMenu($event)" class="font-yestarday ">About</button>
+      <button mat-button (click)="navigateMenu($event)" class="font-yestarday ">Contact</button>
+   </div>
+</div> -->
+<!-- CAROUSEL -->
+<!-- <div (click)="nextSlide()" class="carousel" fxLayout="row" fxLayoutAlign="center center">
+   <div fxFlex="100" class="logomain container ">
+      <img [class.show]="!showText" [src]="selectedImage" class="step">
+      <div [class.show]="!showText" [ngClass]="{'glow': isGlowing}" style="color:blanchedalmond"
+         class=" step centered top-overlay mat-display-3">
+         {{topOverlay}}</div>
+      <div [class.show]="!showText" [ngClass]="{'glow': isGlowing}" style="color:crimson"
+         class=" step centered bottom-overlay mat-display-3">
+         {{bottomOverlay}}</div>
+   </div>
+</div> -->
 
-    <!-- SPACER -->
-    <mat-grid-list cols="2" rowHeight="2:1">
-        <mat-grid-tile>1</mat-grid-tile>
-        <mat-grid-tile>2</mat-grid-tile>
-        <mat-grid-tile>3</mat-grid-tile>
-        <mat-grid-tile>4</mat-grid-tile>
-    </mat-grid-list>
 
-    <div class="featured" fxLayout="column" fxLayout.gt-sm="column" fxLayoutAlign.gt-sm="center center"
-        fxLayoutAlign="center center">
-        <div class="bottom-featured">Feature Products</div>
-    </div>
+<!-- CATEGORIES -->
 
-    <!-- PRODUCST -->
 
-    <div class="products" fxLayout="column" fxFlex fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="center center"
-        fxLayoutGap="20px" fxLayoutAlign="center center" *ngFor="let product of featuredProducts">
-        <div class="fuse-card">
-            <div class="position-relative">
-                <img src="assets/images/cards/card3.jpg">
-                <div class="title position-absolute font-size-20 align-left align-bottom">
-                    Acid Blue
-                </div>
-            </div>
-            <div class="p-16">
-                <div class="h3 red-A400 secondary-text">Nic`aragua</div>
-            </div>
-            <div class="p-16 pt-0 line-height-1.75">
-                The Acid Blue Cigar line holds within it the cigars most widely desired by Acid aficionados.
-            </div>
-            <div class="p-8 pt-0" fxLayout="row" fxLayoutAlign="end center">
-                <button mat-button>EXPLORE</button>
-                <button mat-button>BUY NOW</button>
-            </div>
-        </div>
-        <div class="fuse-card">
-            <div class="position-relative">
-                <img src="assets/images/cards/card3.jpg">
-                <div class="title position-absolute font-size-20 align-left align-bottom">
-                    Acid Blue
-                </div>
-            </div>
-            <div class="p-16">
-                <div class="h3 red-A400 secondary-text">Nic`aragua</div>
-            </div>
-            <div class="p-16 pt-0 line-height-1.75">
-                The Acid Blue Cigar line holds within it the cigars most widely desired by Acid aficionados.
-            </div>
-            <div class="p-8 pt-0" fxLayout="row" fxLayoutAlign="end center">
-                <button mat-button>EXPLORE</button>
-                <button mat-button>BUY NOW</button>
-            </div>
-        </div>
-        <div class="fuse-card">
-            <div class="position-relative">
-                <img src="assets/images/cards/card3.jpg">
-                <div class="title position-absolute font-size-20 align-left align-bottom">
-                    Acid Blue
-                </div>
-            </div>
-            <div class="p-16">
-                <div class="h3 red-A400 secondary-text">Nic`aragua</div>
-            </div>
-            <div class="p-16 pt-0 line-height-1.75">
-                The Acid Blue Cigar line holds within it the cigars most widely desired by Acid aficionados.
-            </div>
-            <div class="p-8 pt-0" fxLayout="row" fxLayoutAlign="end center">
-                <button mat-button>EXPLORE</button>
-                <button mat-button>BUY NOW</button>
-            </div>
-        </div>
-    </div>
 
-    <!-- FOOTER -->
+<!-- SPACER -->
+<!-- <mat-grid-list cols="2" rowHeight="2:1">
+      <mat-grid-tile>1</mat-grid-tile>
+      <mat-grid-tile>2</mat-grid-tile>
+      <mat-grid-tile>3</mat-grid-tile>
+      <mat-grid-tile>4</mat-grid-tile>
+   </mat-grid-list> -->
 
-    <div class="products" fxLayout="column" fxLayout.gt-sm="column" fxLayoutAlign.gt-sm="center center"
-        fxLayoutAlign="center center">
-        <img style="margin: 30px;" width="170" src="assets/images/Cigars.png">
-    </div>
 
-</div>
+<!-- PRODUCST -->
 
+
+
+<!-- FOOTER -->
+
+
+<!-- </div> -->

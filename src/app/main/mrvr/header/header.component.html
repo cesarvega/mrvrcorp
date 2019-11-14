@@ -1,20 +1,32 @@
-<div fxFlex class="menu" fxLayout="column" fxLayoutAlign="center center" fxLayoutAlign.gt-sm="start center"
-fxLayout.gt-sm="row">
-<div fxFlex="20">
 
-</div>
+<div fxFlex class="header-menu" fxLayout="column" fxLayoutAlign="center center" fxLayoutAlign.gt-sm="start center"
+   fxLayout.gt-sm="row">
+   <div fxFlex="20">
 
-<div [@Fade1]="animationSTate" fxFlex="20">
-    <img style="padding:20px;" src="assets/images/Cigars.png">
+   </div>
+
+   <div  fxFlex="20">
+      <img style="padding:20px;" src="assets/images/Cigars.png">
+   </div>
+   <div class="menufont" [@Fade1]="animationSTate" fxFlex="50" fxLayoutGap="10px" fxLayout="column" fxLayout.gt-xs="row"
+      fxLayout.gt-sm="row" fxLayoutAlign="center center" fxLayoutAlign.gt-sm="center  space-around">
+      <button mat-button (click)="navigateMenu('home')" class="font-yestarday">Home</button>
+      <button mat-button (click)="navigateMenu($event)" class="font-yestarday ">Brands</button>
+      <button mat-button (click)="navigateMenu('Products')" class="active font-yestarday ">Products</button>
+      <button mat-button (click)="navigateMenu($event)" class="font-yestarday ">My Account</button>
+      <button mat-button (click)="navigateMenu($event)" class="font-yestarday ">About</button>
+      <button mat-button (click)="navigateMenu($event)" class="font-yestarday ">Contact</button>
+   </div>
 </div>
-<div class="menuFont" [@Fade1]="animationSTate" fxFlex="50" fxLayoutGap="10px" fxLayout="column"
-    fxLayout.gt-xs="row" fxLayout.gt-sm="row" fxLayoutAlign="center center"
-    fxLayoutAlign.gt-sm="center  space-around">
-    <button mat-button (click)="navigateMenu('home')" class="font-yestarday">Home</button>
-    <button mat-button (click)="navigateMenu($event)" class="font-yestarday ">Brands</button>
-    <button mat-button (click)="navigateMenu('Products')" class="active font-yestarday ">Products</button>
-    <button mat-button (click)="navigateMenu($event)" class="font-yestarday ">My Account</button>
-    <button mat-button (click)="navigateMenu($event)" class="font-yestarday ">About</button>
-    <button mat-button (click)="navigateMenu($event)" class="font-yestarday ">Contact</button>
-</div>
-</div>
+<!-- CAROUSEL -->
+<div (click)="nextSlide()" class="carousel" fxLayout="row" fxLayoutAlign="center center">
+    <div fxFlex="100" class="logomain container ">
+       <img [class.show]="!showText" [src]="selectedImage" class="step">
+       <div [class.show]="!showText" [ngClass]="{'glow': isGlowing}" style="color:blanchedalmond"
+          class=" step centered top-overlay mat-display-3">
+          {{topOverlay}}</div>
+       <div [class.show]="!showText" [ngClass]="{'glow': isGlowing}" style="color:crimson"
+          class=" step centered bottom-overlay mat-display-3">
+          {{bottomOverlay}}</div>
+    </div>
+ </div>

@@ -47,8 +47,8 @@ export class HomepageComponent implements OnInit {
   reasons = ['Survey Technical Questions/Comments', 'Payment Questions',
     'Website Questions/Comments', 'Profile/Registration Questions Comments', 'Change Username'];
 
-  featuredProducts = ['Survey Technical Questions/Comments', 'Payment Questions',
-    'Website Questions/Comments'];
+  featuredProducts = ['Survey Technical Questions/Comments', 'Payment Questions', 'Website Questions/Comments', 
+  'Survey Technical Questions/Comments', 'Payment Questions', 'Website Questions/Comments'];
   stripeForm: FormGroup;
   formErrors: any;
   card: any;

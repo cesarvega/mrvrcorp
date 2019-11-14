@@ -5,120 +5,34 @@
   src: url(assets/fonts/attention.otf) format("opentype");
 }
 
-:host {
-
-
-  .glow {
-    // font-size: 80px;
-    color: #fff;
-    text-align: center;
-    -webkit-animation: glow 1s ease-in-out infinite alternate;
-    -moz-animation: glow 1s ease-in-out infinite alternate;
-    animation: glow 1s ease-in-out infinite alternate;
-  }
-  
-  @-webkit-keyframes glow {
-    from {
-      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
-    }
-    
-    to {
-      text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
-    }
-  }
-  .sticky {
-    position: fixed;
-    top: 0;
-    overflow: hidden;
-    z-index: 10;
-    width: 100%;
-  }
-
-  /* Container holding the image and the text */
-  .container {
-    position: relative;
-    text-align: center;
-    color: white;
-  }
-
-  /* Bottom left text */
-  .bottom-left {
-    position: absolute;
-    bottom: 8px;
-    left: 16px;
-  }
-
-  /* Top left text */
-  .top-left {
-    position: absolute;
-    top: 8px;
-    left: 16px;
-  }
-
-  /* Top right text */
-  .top-right {
-    position: absolute;
-    top: 8px;
-    right: 16px;
-  }
-
-  /* Bottom right text */
-  .bottom-right {
-    position: absolute;
-    bottom: 8px;
-    right: 16px;
-  }
-
-  .centered {
-    position: absolute;
-    top: 35%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-}
-
-.categories {
-  background: rgba(3, 3, 3, 0.9);
+.content{
+  z-index:2; margin-top: 850px;
+  background-color: rgb(1,1,1,0.7);
+  color: white;
+  padding-top: 50px;
   width: 100%;
-  padding: 50px;
-  color: wheat;
-  padding-left: 130px;
+
 }
+.logotop {
+      color: white;
+      font-family: "Yesteryear", "arial", sans-serif;
+      font-size: 50px;
+      padding-top: 40px;    
+      background-color: rgba(0, 0, 0, 0.7);
+      font-size: 10px !important;
+      border-radius: 5px;
+    }
+    .font-yestarday-featured {
+      font-family: "Yesteryear", "arial", sans-serif;
+      font-size: 50px;
+    }
 
 .featured {
   background: rgba(218, 5, 5, 0.9);
   width: 100%;
   padding: 50px;
   color: black;
-}
-
-.products {
-  background: rgba(3, 3, 3, 0.95);
-  width: 100%;
-  padding-top: 50px;
-  color: wheat;
-  .fuse-card {
-    background: rgba(241, 4, 4, 0.8);
-    width: 100%;
-    color:  rgba(255, 255, 255, 1);
-    font-family: "monospace", Courier, monospace;
-    .title {
-      font-family: "lato", "arial", sans-serif;
-      font-size: 30px;
-      color: black;
-      background: rgba(255, 255, 255, 0.5);
-    }
-  }
-}
-
-
-.menuFont {
-  font-family: "lato", "arial", sans-serif;
-}
-
-.font-yestarday-featured {
-  font-family: "Yesteryear", "arial", sans-serif;
-  font-size: 50px;
+  @include mat-elevation(16);
 }
 
 .bottom-featured {
@@ -128,180 +42,342 @@
   text-decoration: underline;
 }
 
-.mainContent {
-  margin-top: 380px;
-  z-index: 999;
-  padding-left: 10px;
-  @include media-breakpoint("gt-xs") {
-    margin-top: 500px;
-    z-index: 999;
-  }
-  @include media-breakpoint("gt-sm") {
-    margin-top: 500px;
-    z-index: 999;
-  }
-  @include media-breakpoint("gt-md") {
-    margin-top: 860px;
-    z-index: 999;
-  }
-}
 
-#home {
-  background: url("assets/images/backgrounds/dark-material-bg.jpg") no-repeat;
-  background-size: cover;
-  @include mat-elevation(16);
-  .font-yestarday {
-    font-family: "lato", "arial", sans-serif;
-    font-size: 20px;
-  }
 
-  .menu {
-    z-index: 999999;
-    background-color: black;
-    color: white;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    left: 0px;
-
-    .mat-button:hover {
-      background-color: goldenrod;
-    }
-  }
-  .carousel {
-    z-index: 1;
-    background-color: black;
-    color: white;
-    position: fixed;
-    top: 100px;
-    left: 0px;
-    // width: 100
-
-    .mat-button:hover {
-      background-color: goldenrod;
-    }
-  }
-
-  .top-overlay {
-    font-family: "lato", "arial", sans-serif;
-    font-size: 200px;
-    width: 100%;
-  }
-
-  .bottom-overlay {
-    font-family: "Yesteryear", "arial", sans-serif;
-    font-size: 290px;
-    padding-top: 520px;
-    width: 100%;
-  }
-
-  .show {
-    opacity: 1 !important;
-  }
-  .step {
-    opacity: 0;
-    transition: 0.5s ease-in-out all;
-  }
-
-  .logotop {
-    color: white;
-    font-size: 50px !important;
-    text-align: center;
-    padding-top: 40px;
-  }
-  .featureImage {
-    border-radius: 5px;
-  }
-  @include media-breakpoint("xs") {
-    margin-top: 410px;
-    font-size: 10px !important;
-    .logotop {
-      font-size: 10px !important;
-    }
-    // .menu {
-    //   z-index: 99999;
-    //   background-color: black;
-    //   color: white;
-    //   position: absolute;
-    //   // top: 0;
-    //   width: 100%;
+        // .menu {
+        //   z-index: 99999;
+        //   background-color: black;
+        //   color: white;
+        //   position: absolute;
+        //   // top: 0;
+        //   width: 100%;
+        // }
+    // @include media-breakpoint("xs") {
+    //   margin-top: 410px;
+    //   font-size: 10px !important;
+    //   .logotop {
+    //     font-size: 10px !important;
+    //   }
+    //   // .menu {
+    //   //   z-index: 99999;
+    //   //   background-color: black;
+    //   //   color: white;
+    //   //   position: absolute;
+    //   //   // top: 0;
+    //   //   width: 100%;
+    //   // }
+  
+    //   .top-overlay {
+    //     font-family: "lato", "arial", sans-serif;
+    //     font-size: 60px;
+    //     width: 100%;
+    //   }
+  
+    //   .bottom-overlay {
+    //     font-family: "Yesteryear", "arial", sans-serif;
+    //     font-size: 80px;
+    //     padding-top: 170px;
+    //     width: 100%;
+    //   }
     // }
+    
+// :host {
 
-    .top-overlay {
-      font-family: "lato", "arial", sans-serif;
-      font-size: 60px;
-      width: 100%;
-    }
 
-    .bottom-overlay {
-      font-family: "Yesteryear", "arial", sans-serif;
-      font-size: 80px;
-      padding-top: 170px;
-      width: 100%;
-    }
-  }
-  @include media-breakpoint("sm") {
-    margin-top: 110px;
-    font-size: 10px !important;
-    .logotop {
-      font-size: 10px !important;
-    }
-    // .menu {
-    //   z-index: 99999;
-    //   background-color: black;
-    //   color: white;
-    //   position: absolute;
-    //   // top: 0;
-    //   width: 100%;
-    // }
-    .featureImage {
-      width: 300px;
-      align-items: center;
-      text-align: center;
-    }
-    .top-overlay {
-      font-family: "lato", "arial", sans-serif;
-      font-size: 80px;
-      width: 100%;
-    }
+//   .glow {
+//     // font-size: 80px;
+//     color: #fff;
+//     text-align: center;
+//     -webkit-animation: glow 1s ease-in-out infinite alternate;
+//     -moz-animation: glow 1s ease-in-out infinite alternate;
+//     animation: glow 1s ease-in-out infinite alternate;
+//   }
+  
+//   @-webkit-keyframes glow {
+//     from {
+//       text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+//     }
+    
+//     to {
+//       text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+//     }
+//   }
+//   .sticky {
+//     position: fixed;
+//     top: 0;
+//     overflow: hidden;
+//     z-index: 10;
+//     width: 100%;
+//   }
 
-    .bottom-overlay {
-      font-family: "Yesteryear", "arial", sans-serif;
-      font-size: 120px;
-      padding-top: 200px;
-      width: 100%;
-    }
-  }
-  @include media-breakpoint("md") {
-    // margin-top: 110px;
-    font-size: 10px !important;
-    .logotop {
-      font-size: 10px !important;
-    }
-    // .menu {
-    //   z-index: 99999;
-    //   background-color: black;
-    //   color: white;
-    //   position: absolute;
-    //   // top: 0;
-    //   width: 100%;
-    // // }
-    // .featureImage {
-    //   width: 300px;
-    //   align-items: center;
-    //   text-align: center;
-    // }
-    .top-overlay {
-      font-family: "lato", "arial", sans-serif;
-      font-size: 180px;
-      width: 100%;
-    }
+//   /* Container holding the image and the text */
+//   .container {
+//     position: relative;
+//     text-align: center;
+//     color: white;
+//   }
 
-    .bottom-overlay {
-      font-family: "Yesteryear", "arial", sans-serif;
-      font-size: 180px;
-      padding-top: 300px;
-      width: 100%;
-    }
-  }
-}
+//   /* Bottom left text */
+//   .bottom-left {
+//     position: absolute;
+//     bottom: 8px;
+//     left: 16px;
+//   }
+
+//   /* Top left text */
+//   .top-left {
+//     position: absolute;
+//     top: 8px;
+//     left: 16px;
+//   }
+
+//   /* Top right text */
+//   .top-right {
+//     position: absolute;
+//     top: 8px;
+//     right: 16px;
+//   }
+
+//   /* Bottom right text */
+//   .bottom-right {
+//     position: absolute;
+//     bottom: 8px;
+//     right: 16px;
+//   }
+
+//   .centered {
+//     position: absolute;
+//     top: 35%;
+//     left: 50%;
+//     transform: translate(-50%, -50%);
+//   }
+// }
+
+// .categories {
+//   background: rgba(3, 3, 3, 0.9);
+//   width: 100%;
+//   padding: 50px;
+//   color: wheat;
+//   padding-left: 130px;
+// }
+
+// .featured {
+//   background: rgba(218, 5, 5, 0.9);
+//   width: 100%;
+//   padding: 50px;
+//   color: black;
+// }
+
+// .products {
+//   background: rgba(3, 3, 3, 0.95);
+//   width: 100%;
+//   padding-top: 50px;
+//   color: wheat;
+//   .fuse-card {
+//     background: rgba(241, 4, 4, 0.8);
+//     width: 100%;
+//     color:  rgba(255, 255, 255, 1);
+//     font-family: "monospace", Courier, monospace;
+//     .title {
+//       font-family: "lato", "arial", sans-serif;
+//       font-size: 30px;
+//       color: black;
+//       background: rgba(255, 255, 255, 0.5);
+//     }
+//   }
+// }
+
+
+// .menuFont {
+//   font-family: "lato", "arial", sans-serif;
+// }
+
+// .font-yestarday-featured {
+//   font-family: "Yesteryear", "arial", sans-serif;
+//   font-size: 50px;
+// }
+
+// .bottom-featured {
+//   font-family: "Yesteryear", "arial", sans-serif;
+//   font-size: 60px;
+//   color: black;
+//   text-decoration: underline;
+// }
+
+// .mainContent {
+//   margin-top: 380px;
+//   z-index: 999;
+//   padding-left: 10px;
+//   @include media-breakpoint("gt-xs") {
+//     margin-top: 500px;
+//     z-index: 999;
+//   }
+//   @include media-breakpoint("gt-sm") {
+//     margin-top: 500px;
+//     z-index: 999;
+//   }
+//   @include media-breakpoint("gt-md") {
+//     margin-top: 860px;
+//     z-index: 999;
+//   }
+// }
+
+// #home {
+//   background: url("assets/images/backgrounds/dark-material-bg.jpg") no-repeat;
+//   background-size: cover;
+//   @include mat-elevation(16);
+//   .font-yestarday {
+//     font-family: "lato", "arial", sans-serif;
+//     font-size: 20px;
+//   }
+
+//   .menu {
+//     z-index: 999999;
+//     background-color: black;
+//     color: white;
+//     position: fixed;
+//     top: 0;
+//     width: 100%;
+//     left: 0px;
+
+//     .mat-button:hover {
+//       background-color: goldenrod;
+//     }
+//   }
+//   .carousel {
+//     z-index: 1;
+//     background-color: black;
+//     color: white;
+//     position: fixed;
+//     top: 100px;
+//     left: 0px;
+//     // width: 100
+
+//     .mat-button:hover {
+//       background-color: goldenrod;
+//     }
+//   }
+
+//   .top-overlay {
+//     font-family: "lato", "arial", sans-serif;
+//     font-size: 200px;
+//     width: 100%;
+//   }
+
+//   .bottom-overlay {
+//     font-family: "Yesteryear", "arial", sans-serif;
+//     font-size: 290px;
+//     padding-top: 520px;
+//     width: 100%;
+//   }
+
+//   .show {
+//     opacity: 1 !important;
+//   }
+//   .step {
+//     opacity: 0;
+//     transition: 0.5s ease-in-out all;
+//   }
+
+//   .logotop {
+//     color: white;
+//     font-size: 50px !important;
+//     padding-top: 40px;    
+//     background-color: rgba(255, 255, 255, 0.59);
+//   }
+//   .featureImage {
+//     border-radius: 5px;
+//   }
+//   @include media-breakpoint("xs") {
+//     margin-top: 410px;
+//     font-size: 10px !important;
+//     .logotop {
+//       font-size: 10px !important;
+//     }
+//     // .menu {
+//     //   z-index: 99999;
+//     //   background-color: black;
+//     //   color: white;
+//     //   position: absolute;
+//     //   // top: 0;
+//     //   width: 100%;
+//     // }
+
+//     .top-overlay {
+//       font-family: "lato", "arial", sans-serif;
+//       font-size: 60px;
+//       width: 100%;
+//     }
+
+//     .bottom-overlay {
+//       font-family: "Yesteryear", "arial", sans-serif;
+//       font-size: 80px;
+//       padding-top: 170px;
+//       width: 100%;
+//     }
+//   }
+//   @include media-breakpoint("sm") {
+//     margin-top: 110px;
+//     font-size: 10px !important;
+//     .logotop {
+//       font-size: 10px !important;
+//     }
+//     // .menu {
+//     //   z-index: 99999;
+//     //   background-color: black;
+//     //   color: white;
+//     //   position: absolute;
+//     //   // top: 0;
+//     //   width: 100%;
+//     // }
+//     .featureImage {
+//       width: 300px;
+//       align-items: center;
+//       text-align: center;
+//     }
+//     .top-overlay {
+//       font-family: "lato", "arial", sans-serif;
+//       font-size: 80px;
+//       width: 100%;
+//     }
+
+//     .bottom-overlay {
+//       font-family: "Yesteryear", "arial", sans-serif;
+//       font-size: 120px;
+//       padding-top: 200px;
+//       width: 100%;
+//     }
+//   }
+//   @include media-breakpoint("md") {
+//     // margin-top: 110px;
+//     font-size: 10px !important;
+//     .logotop {
+//       font-size: 10px !important;
+//     }
+//     // .menu {
+//     //   z-index: 99999;
+//     //   background-color: black;
+//     //   color: white;
+//     //   position: absolute;
+//     //   // top: 0;
+//     //   width: 100%;
+//     // // }
+//     // .featureImage {
+//     //   width: 300px;
+//     //   align-items: center;
+//     //   text-align: center;
+//     // }
+//     .top-overlay {
+//       font-family: "lato", "arial", sans-serif;
+//       font-size: 180px;
+//       width: 100%;
+//     }
+
+//     .bottom-overlay {
+//       font-family: "Yesteryear", "arial", sans-serif;
+//       font-size: 180px;
+//       padding-top: 300px;
+//       width: 100%;
+//     }
+//   }
+// }
