@@ -5,7 +5,9 @@
   src: url(assets/fonts/attention.otf) format("opentype");
 }
 
-
+.header {
+  z-index: 999;
+}
     
     .header-menu {
         z-index: 999999;
@@ -30,17 +32,22 @@
         font-family: "lato", "arial", sans-serif;
         font-size: 200px;
         width: 100%;
+        position: absolute;
+        top: 30%;
+        left: 15%;
       }
     
       .bottom-overlay {
         font-family: "Yesteryear", "arial", sans-serif;
-        font-size: 290px;
-        padding-top: 520px;
+        font-size: 290px;        
         width: 100%;
+        position: absolute;
+        top: 50%;
+        left: 15%;
       }
     
       .carousel {
-        z-index: 1;
+        z-index: 3;
         background-color: black;
         color: white;
         position: fixed;
@@ -58,18 +65,29 @@
       .step {
         opacity: 0;
         transition: 0.9s ease-in-out all;
+      } 
+      .glow {
+        // font-size: 80px;
+        color: #fff;
+        text-align: center;
+        -webkit-animation: glow 1s ease-in-out infinite alternate;
+        -moz-animation: glow 1s ease-in-out infinite alternate;
+        animation: glow 1s ease-in-out infinite alternate;
       }
+      @-webkit-keyframes glow {
+            from {
+              text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+            }
+            
+            to {
+              text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+            }
+          }
       .centered {
         position: absolute;
         top: 30%;
-        left: 62%;
+        left: 50%;
         transform: translate(-50%, -50%);
+       
       }
-      .glow {
-            // font-size: 80px;
-            color: #fff;
-            text-align: center;
-            -webkit-animation: glow 1s ease-in-out infinite alternate;
-            -moz-animation: glow 1s ease-in-out infinite alternate;
-            animation: glow 1s ease-in-out infinite alternate;
-          }
+     

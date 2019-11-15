@@ -86,7 +86,7 @@ export class HeaderComponent implements OnInit {
       this.bottomOverlay = this.mainImage[counter].bottom;
       
 
-    }, 5000);
+    }, 50000);
   }
 
 

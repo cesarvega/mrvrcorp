@@ -1,10 +1,8 @@
-
-<div fxFlex class="header-menu" fxLayout="column" fxLayoutAlign="center center" fxLayoutAlign.gt-sm="start center"
+<div fxFlex="100"  fxLayout="column" fxLayoutAlign="center center">
+<div fxFlex class="header-menu" fxLayout="column" fxLayoutAlign="center center" fxLayoutAlign.gt-sm="center center"
    fxLayout.gt-sm="row">
    <div fxFlex="20">
-
    </div>
-
    <div  fxFlex="20">
       <img style="padding:20px;" src="assets/images/Cigars.png">
    </div>
@@ -19,14 +17,12 @@
    </div>
 </div>
 <!-- CAROUSEL -->
-<div (click)="nextSlide()" class="carousel" fxLayout="row" fxLayoutAlign="center center">
-    <div fxFlex="100" class="logomain container ">
-       <img [class.show]="!showText" [src]="selectedImage" class="step">
-       <div [class.show]="!showText" [ngClass]="{'glow': isGlowing}" style="color:blanchedalmond"
-          class=" step centered top-overlay mat-display-3">
+
+    <div fxFlex="100" class="logomain container  "  (click)="nextSlide()" class="carousel" fxLayout="row" fxLayoutAlign="center center">
+       <img [src]="selectedImage" >
+       <div  style="color:blanchedalmond" class="top-overlay">
           {{topOverlay}}</div>
-       <div [class.show]="!showText" [ngClass]="{'glow': isGlowing}" style="color:crimson"
-          class=" step centered bottom-overlay mat-display-3">
+       <div style="color:crimson" class="bottom-overlay">
           {{bottomOverlay}}</div>
     </div>
- </div>
+</div>
